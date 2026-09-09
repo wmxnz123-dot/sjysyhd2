@@ -25,7 +25,7 @@ export const WelcomeBanner: React.FC<WelcomeBannerProps> = ({
             </h1>
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">
               <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
-              数据要素联合工作专班 · 综合管理员
+              数据要素事业部 · 综合管理员
             </span>
           </div>
           <p className="text-sm text-slate-500 leading-relaxed max-w-2xl">

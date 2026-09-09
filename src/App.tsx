@@ -21,7 +21,7 @@ import { SystemModal } from './components/SystemModal';
 import { TodoDetailModal } from './components/TodoDetailModal';
 import { SearchModal } from './components/SearchModal';
 import { LoginPage } from './components/LoginPage';
-import { CheckCircle, Info, Shield, Layers, Globe } from 'lucide-react';
+import { CheckCircle, Info, Layers, Globe } from 'lucide-react';
 
 export default function App() {
   // Auth state - 默认首屏为登录页面，点击登录后再进入首页
@@ -38,13 +38,13 @@ export default function App() {
         ? JSON.parse(saved)
         : {
             name: '张明工',
-            department: '市数据要素联合专班 · 综合科',
+            department: '数据要素事业部',
             role: '全域系统联通权限 (超管级)'
           };
     } catch {
       return {
         name: '张明工',
-        department: '市数据要素联合专班 · 综合科',
+        department: '数据要素事业部',
         role: '全域系统联通权限 (超管级)'
       };
     }
@@ -268,19 +268,15 @@ export default function App() {
             </div>
             <span className="font-semibold text-slate-700">数据要素全链路工作门户</span>
             <span className="text-slate-300">|</span>
-            <span>国家数据局与省市综合数据要素基础设施联通规范</span>
+            <span>数据要素事业部</span>
           </div>
 
           <div className="flex items-center gap-4 text-slate-400">
             <span className="flex items-center gap-1">
-              <Shield className="w-3.5 h-3.5 text-emerald-600" />
-              商用密码二级等保已合规
-            </span>
-            <span className="flex items-center gap-1">
               <Globe className="w-3.5 h-3.5 text-blue-600" />
-              统一身份认证 SSO v3.2
+              统一身份认证
             </span>
-            <span>© 2026 数据要素联合工作专班</span>
+            <span>© 2026 山东亿云信息技术有限公司</span>
           </div>
         </div>
       </footer>

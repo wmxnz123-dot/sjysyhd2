@@ -31,7 +31,7 @@ export const FavoriteSection: React.FC<FavoriteSectionProps> = ({
             </h3>
           </div>
           <span className="text-xs text-slate-400">
-            高频业务系统便捷直达 · 点击系统右上角星标即可添加或取消
+            高频业务系统便捷直达 · 点击系统星标即可添加或取消
           </span>
         </div>
 

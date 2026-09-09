@@ -102,7 +102,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       setIsLoading(false);
       onLogin({
         name: activeTab === 'account' ? (username === 'zhangming' ? '张明工' : username) : '张明工',
-        department: '市数据要素联合专班 · 综合科',
+        department: '数据要素事业部',
         role: '全域系统联通权限 (超管级)'
       });
     }, 350);
@@ -127,9 +127,6 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             </div>
           </div>
 
-          <div className="hidden sm:flex items-center text-xs text-slate-500">
-            <span>服务支持：400-820-9988</span>
-          </div>
         </div>
       </header>
 
@@ -442,7 +439,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 
       {/* Footer */}
       <footer className="py-2.5 px-6 text-center text-[11px] text-slate-400 border-t border-slate-200/60 bg-white/50 shrink-0">
-        <span>© 2026 数据要素全链路统一工作门户 · 国家数据基础设施标准体系试点工程</span>
+        <span>© 2026 数据要素全链路统一工作门户 · 山东亿云信息技术有限公司</span>
       </footer>
     </div>
   );

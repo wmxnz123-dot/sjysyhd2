@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({
   onQuickNavigate,
   currentUser = {
     name: '张明工',
-    department: '市数据要素联合专班 · 综合科',
+    department: '数据要素事业部',
     role: '全域系统联通权限 (超管级)'
   },
   onLogout
@@ -110,7 +110,7 @@ export const Header: React.FC<HeaderProps> = ({
                 value={searchQuery}
                 onChange={e => onSearchChange(e.target.value)}
                 onFocus={() => setIsSearchFocused(true)}
-                placeholder="搜索系统、功能、数据资源... (按 ⌘K)"
+                placeholder="搜索系统..."
                 className="w-full bg-slate-100 border-none rounded-full py-1.5 pl-10 pr-12 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               />
               <div className="absolute inset-y-0 right-0 pr-2 flex items-center">
@@ -294,9 +294,6 @@ export const Header: React.FC<HeaderProps> = ({
                   <div className="text-xs font-semibold text-slate-800 group-hover:text-blue-700 flex items-center justify-end gap-1">
                     <span>{currentUser.name}</span>
                     <ChevronDown className="w-3 h-3 text-slate-400" />
-                  </div>
-                  <div className="text-[10px] text-slate-400 truncate max-w-[120px]">
-                    {currentUser.role.split(' ')[0]}
                   </div>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-blue-100 border border-blue-200 overflow-hidden flex items-center justify-center text-blue-600 font-bold text-xs shadow-2xs">
