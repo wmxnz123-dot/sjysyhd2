@@ -16,7 +16,6 @@ import {
 } from 'lucide-react';
 import { LifecycleStage, LifecycleStageId, SystemItem } from '../types';
 import { SystemCard } from './SystemCard';
-import { IconHelper } from './IconHelper';
 
 interface LifecycleFlowSectionProps {
   stages: LifecycleStage[];
@@ -141,16 +140,13 @@ export const LifecycleFlowSection: React.FC<LifecycleFlowSectionProps> = ({
                 id={`flow-step-${stage.id}`}
                 title="点击可聚焦或还原该阶段"
               >
-                {/* 序号徽标 + 阶段图标 */}
-                <div className="flex items-center gap-1.5 mb-1.5">
-                  <span className="text-[10px] font-bold font-mono px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 border border-slate-200">
-                    0{stage.order}
-                  </span>
+                {/* 阶段序号色块（保留背景，将数字放入其中） */}
+                <div className="mb-2">
                   <div
-                    className="w-7 h-7 rounded-lg flex items-center justify-center text-white shadow-xs"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center text-white shadow-xs font-bold text-xs font-mono"
                     style={{ backgroundColor: stage.accentColor }}
                   >
-                    <IconHelper name={stage.iconName} className="w-4 h-4" />
+                    0{stage.order}
                   </div>
                 </div>
 
