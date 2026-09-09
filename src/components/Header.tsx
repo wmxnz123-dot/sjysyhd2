@@ -82,7 +82,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-2xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-[95%] mx-auto">
         <div className="flex items-center justify-between h-14 gap-4">
           {/* Logo and System Title */}
           <div className="flex items-center gap-3 shrink-0">
