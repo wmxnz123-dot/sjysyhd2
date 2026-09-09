@@ -4,8 +4,7 @@ import {
   Layers,
   Sparkles,
   Server,
-  Activity,
-  CheckCircle2
+  Activity
 } from 'lucide-react';
 
 interface WelcomeBannerProps {
@@ -52,20 +51,26 @@ export const WelcomeBanner: React.FC<WelcomeBannerProps> = ({
             <span className="text-[11px] text-slate-600 font-medium mt-0.5">联通系统</span>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 py-2.5 flex flex-col items-center min-w-[90px] shadow-2xs">
-            <div className="flex items-center gap-1.5 text-emerald-700">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span className="text-sm font-bold">100%</span>
+          <div 
+            className="bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 py-2.5 flex flex-col items-center min-w-[90px] shadow-2xs"
+            title="暂无统计数据，预留展位"
+          >
+            <div className="flex items-center gap-1.5 text-slate-400">
+              <Activity className="w-3.5 h-3.5" />
+              <span className="text-lg font-bold font-mono text-slate-400">--</span>
             </div>
-            <span className="text-[11px] text-slate-600 font-medium mt-0.5">SSO已就绪</span>
+            <span className="text-[11px] text-slate-500 font-medium mt-0.5">统计展位 01</span>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 py-2.5 flex flex-col items-center min-w-[90px] shadow-2xs">
-            <div className="flex items-center gap-1.5 text-emerald-600">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span className="text-sm font-bold text-slate-800">正常</span>
+          <div 
+            className="bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 py-2.5 flex flex-col items-center min-w-[90px] shadow-2xs"
+            title="暂无统计数据，预留展位"
+          >
+            <div className="flex items-center gap-1.5 text-slate-400">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span className="text-lg font-bold font-mono text-slate-400">--</span>
             </div>
-            <span className="text-[11px] text-slate-600 font-medium mt-0.5">服务健康</span>
+            <span className="text-[11px] text-slate-500 font-medium mt-0.5">统计展位 02</span>
           </div>
         </div>
       </div>
