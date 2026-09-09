@@ -24,15 +24,8 @@ import { LoginPage } from './components/LoginPage';
 import { CheckCircle, Info, Shield, Layers, Globe } from 'lucide-react';
 
 export default function App() {
-  // Auth state
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
-    try {
-      const saved = localStorage.getItem('portal_is_logged_in');
-      return saved !== null ? saved === 'true' : true;
-    } catch {
-      return true;
-    }
-  });
+  // Auth state - 默认首屏为登录页面，点击登录后再进入首页
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const [currentUser, setCurrentUser] = useState<{
     name: string;
