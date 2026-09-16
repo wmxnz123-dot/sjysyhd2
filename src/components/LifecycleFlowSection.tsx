@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
 import {
-  ChevronRight,
-  Workflow,
-  Sparkles,
-  ArrowRight,
-  CheckCircle2,
   Layers,
-  ArrowDownToLine,
-  Database,
-  Cpu,
-  Network,
-  Rocket,
-  Info,
-  ShieldCheck
+  ChevronRight,
+  RotateCcw,
+  Check
 } from 'lucide-react';
 import { LifecycleStage, LifecycleStageId, SystemItem } from '../types';
 import { SystemCard } from './SystemCard';
@@ -32,9 +23,8 @@ export const LifecycleFlowSection: React.FC<LifecycleFlowSectionProps> = ({
   onEnterSystem,
   searchFilter = ''
 }) => {
-  // Active stage filter (null means show all 5 stages in full pipeline)
-  const [activeStageId, setActiveStageId] = useState<LifecycleStageId | 'all'>('all');
-  const [layoutMode, setLayoutMode] = useState<'columns' | 'pipeline'>('columns');
+  // 默认展示全部系统，点击左侧阶段可进行单阶段筛选
+  const [selectedStageId, setSelectedStageId] = useState<LifecycleStageId | 'all'>('all');
 
   // Filter systems based on search if provided
   const query = searchFilter.trim().toLowerCase();
@@ -50,232 +40,219 @@ export const LifecycleFlowSection: React.FC<LifecycleFlowSectionProps> = ({
     );
   };
 
-  const displayedStages =
-    activeStageId === 'all'
-      ? stages
-      : stages.filter(st => st.id === activeStageId);
+  // 全量系统总数与当前过滤后的系统列表
+  const totalSystemsCount = stages.reduce((acc, st) => acc + st.systems.length, 0);
+  const selectedStage = stages.find(s => s.id === selectedStageId);
+
+  // 右侧直接平铺展示的系统列表
+  const displayedSystems =
+    selectedStageId === 'all'
+      ? stages.flatMap(st => getFilteredStageSystems(st))
+      : selectedStage
+      ? getFilteredStageSystems(selectedStage)
+      : [];
 
   return (
-    <section id="lifecycle-section" className="mb-8 scroll-mt-20">
-      {/* Section Header with Geometric Balance Divider */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+    <section id="lifecycle-section" className="mb-2 scroll-mt-20">
+      {/* 模块顶部标题栏 */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
         <div className="flex items-center gap-2.5">
-          <h2 className="text-xs sm:text-sm font-bold text-slate-700 tracking-wider">
-            数据要素全链路业务系统流转全景
+          <div className="w-6 h-6 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shadow-2xs">
+            <Layers className="w-3.5 h-3.5" />
+          </div>
+          <h2 className="text-xs sm:text-sm font-bold text-slate-800 tracking-wider">
+            数据要素全链路业务系统
           </h2>
           <span className="inline-flex px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100">
-            5大流转阶段 · 16套业务系统
+            5大流转阶段 · {totalSystemsCount}套业务系统
           </span>
         </div>
-        
-        <div className="flex items-center gap-3">
-          {/* View switcher buttons */}
-          <div className="flex items-center bg-slate-100 p-0.5 rounded-lg border border-slate-200 text-xs">
-            <button
-              type="button"
-              onClick={() => setLayoutMode('columns')}
-              className={`px-3 py-1 rounded-md transition-colors font-medium cursor-pointer ${
-                layoutMode === 'columns'
-                  ? 'bg-white text-blue-700 shadow-2xs font-semibold'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              竖向看板模式
-            </button>
-            <button
-              type="button"
-              onClick={() => setLayoutMode('pipeline')}
-              className={`px-3 py-1 rounded-md transition-colors font-medium cursor-pointer ${
-                layoutMode === 'pipeline'
-                  ? 'bg-white text-blue-700 shadow-2xs font-semibold'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              全景泳道模式
-            </button>
-          </div>
 
-          <div className="hidden md:flex gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-            <span className="w-2 h-2 rounded-full bg-blue-300"></span>
-            <span className="w-2 h-2 rounded-full bg-blue-100"></span>
-          </div>
+        <div className="flex items-center gap-2 text-xs text-slate-400">
+          <span className="inline-block w-2 h-2 rounded-full bg-blue-500"></span>
+          <span>按要素生命周期自上而下流转协同</span>
         </div>
       </div>
 
-      {/* Active Stage Filter Notice */}
-      {activeStageId !== 'all' && (
-        <div className="mb-4 px-4 py-2.5 rounded-xl bg-blue-50/80 border border-blue-200 flex items-center justify-between text-xs text-blue-800">
-          <div className="flex items-center gap-2">
-            <Info className="w-4 h-4 text-blue-600 shrink-0" />
-            <span>
-              正在聚焦查看：<strong>{stages.find(s => s.id === activeStageId)?.name}</strong>（共 {stages.find(s => s.id === activeStageId)?.systems.length} 套系统）
-            </span>
+      {/* 工作台左右分栏架构：左侧阶段导航筛选 + 右侧直接平铺展示所有系统 */}
+      <div className="flex flex-col lg:flex-row lg:items-stretch gap-4">
+        {/* 左侧阶段导航筛选侧栏 */}
+        <aside className="w-full lg:w-72 xl:w-76 shrink-0 bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-2xs flex flex-col">
+          <div className="px-1.5 py-1 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-800">流转阶段导航</span>
+            <span className="text-[11px] text-slate-400">点击筛选对应阶段系统</span>
           </div>
-          <button
-            onClick={() => setActiveStageId('all')}
-            className="font-semibold text-blue-700 hover:text-blue-900 hover:underline cursor-pointer"
-          >
-            还原显示全部阶段 (16套系统)
-          </button>
-        </div>
-      )}
 
-      {/* 阶段流转节点与流转箭头模块 (统一置于上方，各节点带序号、图标、名称、subtitle和流转箭头，与下方五列精准对齐) */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-3.5 sm:p-4 mb-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-          {stages.map((stage, idx) => {
-            const isFocused = activeStageId === stage.id;
-            const stageSystems = getFilteredStageSystems(stage);
-
-            return (
-              <div
-                key={stage.id}
-                onClick={() => setActiveStageId(stage.id === activeStageId ? 'all' : stage.id)}
-                className={`relative flex flex-col items-center text-center p-3 rounded-xl cursor-pointer transition-all border ${
-                  isFocused
-                    ? 'bg-blue-50/90 border-blue-500 ring-2 ring-blue-500/20 shadow-xs'
-                    : 'bg-white border-slate-200/90 hover:border-blue-300 hover:bg-slate-50/80 shadow-2xs'
-                }`}
-                id={`flow-step-${stage.id}`}
-                title="点击可聚焦或还原该阶段"
-              >
-                {/* 阶段序号色块（保留背景，将数字放入其中） */}
-                <div className="mb-2">
-                  <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center text-white shadow-xs font-bold text-xs font-mono"
-                    style={{ backgroundColor: stage.accentColor }}
-                  >
-                    0{stage.order}
-                  </div>
+          <div className="flex-1 flex flex-col justify-between py-1 space-y-2">
+            {/* 全部系统选项（默认选中） */}
+            <button
+              type="button"
+              onClick={() => setSelectedStageId('all')}
+              className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center justify-between cursor-pointer border ${
+                selectedStageId === 'all'
+                  ? 'bg-blue-50/90 border-blue-500 shadow-2xs ring-1 ring-blue-500/20 text-blue-900'
+                  : 'bg-white border-transparent hover:bg-slate-50 text-slate-700 hover:border-slate-200'
+              }`}
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div
+                  className={`w-7.5 h-7.5 rounded-lg flex items-center justify-center font-bold text-[11px] shrink-0 transition-colors ${
+                    selectedStageId === 'all'
+                      ? 'bg-blue-600 text-white shadow-2xs'
+                      : 'bg-slate-100 text-slate-600'
+                  }`}
+                >
+                  ALL
                 </div>
-
-                {/* 阶段名称 */}
-                <div className="text-xs sm:text-sm font-bold text-slate-900 tracking-tight whitespace-nowrap">
-                  {stage.name}
+                <div className="min-w-0">
+                  <div className="text-xs font-bold truncate">全部业务系统</div>
+                  <div className="text-[10px] text-slate-400 truncate mt-0.5">全生命周期 5 大阶段</div>
                 </div>
-
-                {/* 一句话介绍 */}
-                <div className="text-[11px] text-slate-500 mt-0.5 whitespace-nowrap font-normal">
-                  {stage.subtitle}
-                </div>
-
-                {/* 桌面端流转连接箭头: 指向下一个阶段列 */}
-                {idx < stages.length - 1 && (
-                  <div className="absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 hidden lg:flex w-5 h-5 rounded-full bg-white border border-slate-200 shadow-2xs items-center justify-center text-slate-400 pointer-events-none">
-                    <ChevronRight className="w-3 h-3 text-slate-500" />
-                  </div>
+              </div>
+              <div className="flex items-center gap-1.5 shrink-0">
+                <span
+                  className={`text-[10px] px-1.5 py-0.5 rounded font-semibold ${
+                    selectedStageId === 'all'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-slate-100 text-slate-600'
+                  }`}
+                >
+                  {totalSystemsCount} 套
+                </span>
+                {selectedStageId === 'all' && (
+                  <Check className="w-3.5 h-3.5 text-blue-600" />
                 )}
               </div>
-            );
-          })}
-        </div>
-      </div>
+            </button>
 
-      {/* 竖向看板模式: 下方系统排版保持不动，垂直与上方 5 个节点严密对应 */}
-      {layoutMode === 'columns' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-start">
-          {displayedStages.map((stage) => {
-            const stageSystems = getFilteredStageSystems(stage);
+            {/* 分割线 */}
+            <div className="h-px bg-slate-100 w-full my-0.5" />
 
-            return (
-              <div
-                key={stage.id}
-                className="bg-slate-50/70 rounded-2xl p-2.5 sm:p-3 border border-slate-200 flex flex-col gap-2.5 shadow-2xs"
-                id={`kanban-col-${stage.id}`}
-              >
-                {/* 看板列头 */}
-                <div className="flex items-center justify-between px-1 pb-1.5 border-b border-slate-200/80">
-                  <div className="flex items-center gap-1.5 min-w-0">
-                    <span
-                      className="w-2 h-2 rounded-full shrink-0"
-                      style={{ backgroundColor: stage.accentColor }}
-                    />
-                    <span className="text-xs font-bold text-slate-800 truncate">{stage.name}</span>
-                  </div>
-                  <span className="text-[11px] font-semibold text-slate-500 shrink-0">
-                    {stageSystems.length}套
-                  </span>
-                </div>
+            {/* 5大流转阶段列表 */}
+            {stages.map((stage, idx) => {
+              const isSelected = selectedStageId === stage.id;
+              const stageFilteredSystems = getFilteredStageSystems(stage);
+              const isLast = idx === stages.length - 1;
 
-                {/* 该阶段系统卡片纵向排列，排版保持不动 */}
-                <div className="flex flex-col gap-2.5">
-                  {stageSystems.map(system => (
-                    <SystemCard
-                      key={system.id}
-                      system={system}
-                      isFavorite={favoriteSystemIds.includes(system.id)}
-                      onToggleFavorite={onToggleFavorite}
-                      onEnterSystem={onEnterSystem}
-                    />
-                  ))}
-                  {stageSystems.length === 0 && (
-                    <div className="p-6 text-center text-xs text-slate-400 bg-white rounded-xl border border-dashed border-slate-200">
-                      未匹配到系统
+              return (
+                <div key={stage.id} className="relative flex-1 flex flex-col justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedStageId(stage.id)}
+                    className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center justify-between cursor-pointer border ${
+                      isSelected
+                        ? 'border-blue-500 shadow-2xs ring-1 ring-blue-500/20'
+                        : 'border-transparent hover:bg-slate-50 text-slate-700 hover:border-slate-200'
+                    }`}
+                    style={{
+                      backgroundColor: isSelected ? stage.accentBg : undefined
+                    }}
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      {/* 阶段编号 */}
+                      <div
+                        className="w-7.5 h-7.5 rounded-lg flex items-center justify-center font-bold text-xs text-white font-mono shrink-0 shadow-2xs"
+                        style={{ backgroundColor: stage.accentColor }}
+                      >
+                        0{stage.order}
+                      </div>
+
+                      {/* 阶段标题与副标 */}
+                      <div className="min-w-0">
+                        <div
+                          className={`text-xs font-bold truncate ${
+                            isSelected ? 'text-slate-900' : 'text-slate-800'
+                          }`}
+                        >
+                          {stage.name}
+                        </div>
+                        <div className="text-[10px] text-slate-400 truncate mt-0.5">
+                          {stage.subtitle}
+                        </div>
+                      </div>
                     </div>
+
+                    {/* 右侧数量指示与高亮图标 */}
+                    <div className="flex items-center gap-1 shrink-0 ml-1">
+                      <span
+                        className={`text-[10px] px-1.5 py-0.5 rounded font-semibold ${
+                          isSelected
+                            ? 'bg-white text-slate-800 shadow-2xs border border-slate-200'
+                            : 'bg-slate-100 text-slate-500'
+                        }`}
+                      >
+                        {stageFilteredSystems.length} 套
+                      </span>
+                      {isSelected ? (
+                        <Check className="w-3.5 h-3.5 text-blue-600 ml-0.5" />
+                      ) : (
+                        <ChevronRight className="w-3 h-3 text-slate-300" />
+                      )}
+                    </div>
+                  </button>
+
+                  {/* 阶段间竖向轻量微连接线 */}
+                  {!isLast && (
+                    <div className="w-0.5 h-1.5 bg-slate-200 mx-auto my-0.5 rounded-full" />
                   )}
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+              );
+            })}
+          </div>
+        </aside>
 
-      {/* 全景泳道模式: 各阶段横向泳道卡片网格 */}
-      {layoutMode === 'pipeline' && (
-        <div className="space-y-5">
-          {displayedStages.map(stage => {
-            const stageSystems = getFilteredStageSystems(stage);
-
-            return (
-              <div
-                key={stage.id}
-                className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm transition-all hover:border-slate-300"
-                id={`stage-lane-${stage.id}`}
-              >
-                {/* Stage Header Banner */}
-                <div className="flex items-center justify-between gap-3 pb-3.5 mb-4 border-b border-slate-100">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center text-white shadow-xs font-bold text-xs shrink-0"
-                      style={{ backgroundColor: stage.accentColor }}
-                    >
-                      0{stage.order}
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <h3 className="text-base font-bold text-slate-900 tracking-tight">
-                        {stage.name}
-                      </h3>
-                      <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-slate-100 text-slate-700 border border-slate-200">
-                        {stageSystems.length} 套业务系统
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Stage Systems Grid */}
-                {stageSystems.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                    {stageSystems.map(system => (
-                      <SystemCard
-                        key={system.id}
-                        system={system}
-                        isFavorite={favoriteSystemIds.includes(system.id)}
-                        onToggleFavorite={onToggleFavorite}
-                        onEnterSystem={onEnterSystem}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="p-8 text-center text-xs text-slate-500 bg-slate-50 rounded-xl border border-slate-200">
-                    当前搜索条件下未匹配到本阶段的系统
-                  </div>
+        {/* 右侧业务系统工作台展示区：直接平铺列出所有系统，不为每个阶段单独套框 */}
+        <div className="flex-1 min-w-0 w-full bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-2xs">
+          <div>
+            {/* 顶部指示条 */}
+            <div className="flex items-center justify-between gap-3 pb-3 mb-4 border-b border-slate-100">
+              <div className="flex items-center gap-2.5">
+                <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
+                  <span>{selectedStageId === 'all' ? '全部业务系统' : selectedStage?.name}</span>
+                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-100">
+                    {displayedSystems.length} 套系统
+                  </span>
+                </h3>
+                {selectedStage && selectedStageId !== 'all' && (
+                  <span className="text-xs text-slate-400 hidden sm:inline">
+                    · {selectedStage.subtitle}
+                  </span>
                 )}
               </div>
-            );
-          })}
+
+              {selectedStageId !== 'all' && (
+                <button
+                  type="button"
+                  onClick={() => setSelectedStageId('all')}
+                  className="text-xs text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1 cursor-pointer hover:underline"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>显示全部系统</span>
+                </button>
+              )}
+            </div>
+
+            {/* 直接平铺渲染所有系统卡片，无阶段嵌套框 */}
+            {displayedSystems.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
+                {displayedSystems.map(system => (
+                  <SystemCard
+                    key={system.id}
+                    system={system}
+                    isFavorite={favoriteSystemIds.includes(system.id)}
+                    onToggleFavorite={onToggleFavorite}
+                    onEnterSystem={onEnterSystem}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="py-12 text-center text-xs text-slate-400 bg-slate-50/50 rounded-xl border border-dashed border-slate-200">
+                当前搜索条件下未匹配到业务系统
+              </div>
+            )}
+          </div>
         </div>
-      )}
+      </div>
     </section>
   );
 };

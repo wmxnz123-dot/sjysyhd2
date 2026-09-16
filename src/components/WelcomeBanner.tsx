@@ -15,20 +15,20 @@ export const WelcomeBanner: React.FC<WelcomeBannerProps> = ({
   userName
 }) => {
   return (
-    <section className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm mb-6">
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+    <section className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-4.5 shadow-2xs mb-3.5">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         {/* Welcome greetings and subtitle */}
         <div>
-          <div className="flex items-center gap-2.5 mb-1.5 flex-wrap">
-            <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <h1 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
               欢迎回来，{userName}
             </h1>
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">
-              <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 text-blue-700 border border-blue-100">
+              <ShieldCheck className="w-3 h-3 text-blue-600" />
               数据要素事业部 · 综合管理员
             </span>
           </div>
-          <p className="text-sm text-slate-500 leading-relaxed max-w-2xl">
+          <p className="text-xs sm:text-[13px] text-slate-500 leading-relaxed max-w-none whitespace-nowrap overflow-hidden text-ellipsis">
             数据要素全链路工作门户 · 涵盖数据资源化、资产化与价值化全生命周期，提供 16 套业务系统的统一单点登录与敏捷导航。
           </p>
         </div>

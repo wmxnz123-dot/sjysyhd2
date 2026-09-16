@@ -15,29 +15,29 @@ export const FavoriteSection: React.FC<FavoriteSectionProps> = ({
   onEnterSystem
 }) => {
   return (
-    <section id="favorite-section" className="mb-6 scroll-mt-20">
-      <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-4 pb-2.5 border-b border-slate-100">
-          <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded-md bg-amber-50 text-amber-500 flex items-center justify-center">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500" />
+    <section id="favorite-section" className="mb-3.5 scroll-mt-20">
+      <div className="bg-white rounded-2xl p-3 sm:p-3.5 border border-slate-200/90 shadow-2xs">
+        {/* Header - 精简紧凑，减少留白 */}
+        <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-slate-100">
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 rounded-md bg-amber-50 text-amber-500 flex items-center justify-center">
+              <Star className="w-3 h-3 fill-amber-400 text-amber-500" />
             </div>
-            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <h3 className="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-1.5">
               <span>我收藏的系统</span>
-              <span className="text-[11px] px-2 py-0.2 rounded-full bg-amber-50 text-amber-700 font-semibold border border-amber-200">
-                {favoriteSystems.length} 套
+              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-amber-50 text-amber-700 font-semibold border border-amber-200">
+                {favoriteSystems.length}
               </span>
             </h3>
           </div>
-          <span className="text-xs text-slate-400">
+          <span className="text-[11px] text-slate-400 hidden sm:inline">
             高频业务系统便捷直达 · 点击系统星标即可添加或取消
           </span>
         </div>
 
-        {/* System Cards Grid */}
+        {/* System Cards Grid / Empty Placeholder */}
         {favoriteSystems.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2.5">
             {favoriteSystems.map(system => (
               <SystemCard
                 key={system.id}
@@ -49,12 +49,12 @@ export const FavoriteSection: React.FC<FavoriteSectionProps> = ({
             ))}
           </div>
         ) : (
-          <div className="py-7 px-4 text-center bg-slate-50/50 rounded-xl border border-dashed border-slate-200">
-            <Star className="w-6 h-6 text-slate-300 mx-auto mb-1.5" />
-            <p className="text-xs font-semibold text-slate-700">暂无收藏的系统</p>
-            <p className="text-[11px] text-slate-400 mt-0.5">
-              点击下方全链路中任意系统卡片右上角的星标，即可快速收藏至此处
-            </p>
+          <div className="h-[66px] sm:h-[70px] px-3.5 flex items-center justify-center gap-2 bg-slate-50/70 rounded-xl border border-dashed border-slate-200 text-slate-500">
+            <Star className="w-4 h-4 text-slate-400 shrink-0" />
+            <span className="text-xs text-slate-600 font-medium">暂无收藏的常用系统</span>
+            <span className="text-[11px] text-slate-400">
+              （点击下方任意业务系统的星标，即可快速收藏至此处）
+            </span>
           </div>
         )}
       </div>
