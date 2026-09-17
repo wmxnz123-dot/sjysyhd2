@@ -6,14 +6,9 @@ import {
   Eye,
   EyeOff,
   ArrowRight,
-  Database,
-  Share2,
-  Cpu,
   Sparkles,
   Smartphone,
-  KeyRound,
-  Activity,
-  Network
+  KeyRound
 } from 'lucide-react';
 
 interface LoginPageProps {
@@ -131,10 +126,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 flex items-center justify-center p-4 sm:p-6 overflow-hidden">
-        <div className="w-full max-w-[920px] min-h-[480px] max-h-[calc(100vh-88px)] bg-white rounded-2xl border border-slate-200/90 shadow-xl shadow-slate-900/5 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+      <main className="flex-1 flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+        <div className="w-full max-w-[1140px] min-h-[570px] bg-white rounded-2xl border border-slate-200/90 shadow-2xl shadow-slate-900/10 overflow-hidden grid grid-cols-1 lg:grid-cols-12 my-auto">
           {/* Left Decorative & Info Panel (7 cols on lg - wider) */}
-          <div className="lg:col-span-7 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-7 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden">
             {/* Background Cyber Blueprint Grid SVG */}
             <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -150,93 +145,36 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-blue-600/15 blur-2xl pointer-events-none" />
             <div className="absolute -left-12 -bottom-12 w-48 h-48 rounded-full bg-indigo-600/15 blur-2xl pointer-events-none" />
 
-            {/* Top Branding Section */}
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/15 text-blue-300 text-xs font-medium border border-blue-400/25 mb-3 backdrop-blur-xs">
+            {/* Top Branding Section: Two-line title, breathable spacing, closely connecting to the diagram below */}
+            <div className="relative z-10 shrink-0 mb-1">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/15 text-blue-300 text-xs font-semibold border border-blue-400/30 mb-1.5 backdrop-blur-xs">
                 <Sparkles className="w-3.5 h-3.5 text-blue-400" />
                 <span>全生命周期一网通办</span>
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-2 leading-snug">
+              <h2 className="text-2xl sm:text-[26px] lg:text-[28px] font-black tracking-wide text-white mb-1 leading-snug drop-shadow-sm">
                 全链路数据要素
                 <br />
                 业务集约协同中枢
               </h2>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs sm:text-[13px] text-slate-300/85 leading-relaxed max-w-[560px]">
                 纵向贯通采集治理，横向协同开发流通与资产运营，驱动数据要素全生命周期价值释放。
               </p>
             </div>
 
-            {/* Middle Tech Visual: Data Pipeline Topology Graph */}
-            <div className="relative z-10 my-3 p-3 rounded-xl bg-slate-900/80 border border-slate-800/90 shadow-inner backdrop-blur-xs">
-              <div className="flex items-center justify-between text-[10px] text-slate-400 mb-2.5 pb-2 border-b border-slate-800/80 font-mono">
-                <span className="flex items-center gap-1.5 text-blue-400 font-medium">
-                  <Activity className="w-3 h-3 animate-pulse" />
-                  DATA LIFECYCLE MESH
-                </span>
-                <span className="text-slate-500">5 STAGES</span>
-              </div>
-
-              {/* 5-Node Interconnected Data Flow */}
-              <div className="relative flex items-center justify-between px-2 sm:px-4">
-                {/* Connecting Circuit Line */}
-                <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-0.5 bg-gradient-to-r from-blue-500/40 via-indigo-500/50 to-emerald-500/40 z-0" />
-
-                {/* Node 1: 汇聚 */}
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-7 h-7 rounded-lg bg-blue-950 border border-blue-400/50 flex items-center justify-center text-blue-400 shadow-sm shadow-blue-500/20">
-                    <Database className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-[10px] text-slate-300 mt-1.5 font-medium">汇聚</span>
-                </div>
-
-                {/* Node 2: 治理 */}
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-7 h-7 rounded-lg bg-indigo-950 border border-indigo-400/50 flex items-center justify-center text-indigo-400 shadow-sm shadow-indigo-500/20">
-                    <Layers className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-[10px] text-slate-300 mt-1.5 font-medium">治理</span>
-                </div>
-
-                {/* Node 3: 开发 */}
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-7 h-7 rounded-lg bg-cyan-950 border border-cyan-400/50 flex items-center justify-center text-cyan-400 shadow-sm shadow-cyan-500/20">
-                    <Cpu className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-[10px] text-slate-300 mt-1.5 font-medium">开发</span>
-                </div>
-
-                {/* Node 4: 流通 */}
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-7 h-7 rounded-lg bg-emerald-950 border border-emerald-400/50 flex items-center justify-center text-emerald-400 shadow-sm shadow-emerald-500/20">
-                    <Share2 className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-[10px] text-slate-300 mt-1.5 font-medium">流通</span>
-                </div>
-
-                {/* Node 5: 运营 */}
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-7 h-7 rounded-lg bg-amber-950 border border-amber-400/50 flex items-center justify-center text-amber-400 shadow-sm shadow-amber-500/20">
-                    <Network className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-[10px] text-slate-300 mt-1.5 font-medium">运营</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Highlights */}
-            <div className="relative z-10 space-y-2 text-xs">
-              <div className="flex items-center gap-2 text-slate-300">
-                <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-                <span>全域数据资源一网汇聚 · 统一纳管</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-300">
-                <div className="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0" />
-                <span>跨域可信流通交易 · 资产合规运营</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-300">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                <span>统一单点鉴权 · 20+ 专业系统互联互通</span>
-              </div>
+            {/* Left Visual Asset: Balanced 3D scale with animated orbital flow, traveling arrows and bottom flow legend */}
+            <div className="relative z-10 flex-1 flex items-center justify-center pt-0 pb-1 px-0 overflow-hidden min-h-[350px]">
+              <img
+                src="/未标题-2.svg"
+                alt="全链路数据要素业务集约协同中枢"
+                className="w-full h-auto max-h-[415px] object-contain mx-auto select-none drop-shadow-[0_12px_28px_rgba(2,132,199,0.35)] transition-all duration-300"
+                loading="eager"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('未标题-2.png')) {
+                    target.src = '/未标题-2.png';
+                  }
+                }}
+              />
             </div>
           </div>
 

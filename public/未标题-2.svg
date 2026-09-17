@@ -1,0 +1,505 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 110 1200 675" width="100%" height="100%">
+  <defs>
+    <!-- Multi-depth background radial atmosphere -->
+    <radialGradient id="centerCoreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.5"/>
+      <stop offset="35%" stop-color="#0284c7" stop-opacity="0.22"/>
+      <stop offset="75%" stop-color="#0369a1" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Deep atmospheric space gradients -->
+    <linearGradient id="orbitDeep" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity="0.2"/>
+      <stop offset="30%" stop-color="#1e293b" stop-opacity="0.45"/>
+      <stop offset="70%" stop-color="#1e3a5f" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <linearGradient id="orbitMid" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0369a1" stop-opacity="0.3"/>
+      <stop offset="35%" stop-color="#0284c7" stop-opacity="0.75"/>
+      <stop offset="65%" stop-color="#0ea5e9" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <linearGradient id="orbitBright" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
+      <stop offset="25%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#e0f2fe" stop-opacity="1"/>
+      <stop offset="75%" stop-color="#60a5fa" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- 3D Card Gradients (Isometric Frosted Glass with Depth) -->
+    <linearGradient id="cardGrad3D" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#142e58" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#0a1d3b" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#051024" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <linearGradient id="cardBorder3D" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#0284c7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <!-- 3D Platform Gradients -->
+    <linearGradient id="platTop3D" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#1d4ed8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0f264d" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="platRim3D" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="platSide3D" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c234a"/>
+      <stop offset="100%" stop-color="#020817"/>
+    </linearGradient>
+
+    <!-- 3D Badge Gradients -->
+    <linearGradient id="badgeGrad3D" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="40%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+
+    <!-- 3D Cube Crystal Faces -->
+    <linearGradient id="cubeTop3D" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="40%" stop-color="#bae6fd"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="cubeLeft3D" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="cubeRight3D" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="50%" stop-color="#075985"/>
+      <stop offset="100%" stop-color="#0c234a"/>
+    </linearGradient>
+
+    <!-- Vertical 3D Light Column Emitter -->
+    <linearGradient id="lightBeam" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35"/>
+      <stop offset="30%" stop-color="#0284c7" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Laser Pulse Gradient for Traveling Arrow comet tail -->
+    <linearGradient id="cometTail" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="70%" stop-color="#38bdf8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="1"/>
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="intenseGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9" result="blur1"/>
+      <feGaussianBlur stdDeviation="3" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="shadow3D" x="-30%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#020617" flood-opacity="0.85"/>
+    </filter>
+
+    <filter id="cardShadow3D" x="-30%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#020617" flood-opacity="0.8"/>
+    </filter>
+
+    <filter id="arrowHeadGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Exact guide path for cruising arrow: clockwise loop starting from top (600, 267) -->
+    <!-- Center (600, 436), rx=355, ry=169 -->
+    <path id="flightTrack" d="M 600 267 A 355 169 0 1 1 599.9 267 Z" fill="none"/>
+  </defs>
+
+  <!-- Ambient Glow behind central loop -->
+  <ellipse cx="600" cy="425" rx="380" ry="200" fill="url(#centerCoreGlow)"/>
+
+  <!-- Perspective holographic floor rings -->
+  <g opacity="0.3" stroke="#0ea5e9" stroke-width="0.8" fill="none">
+    <ellipse cx="600" cy="460" rx="490" ry="195" stroke-dasharray="6,12"/>
+    <ellipse cx="600" cy="475" rx="520" ry="180" stroke-dasharray="4,16" opacity="0.18"/>
+  </g>
+
+  <!-- ================= MULTI-DEPTH LAYERED ORBITAL TRACKS ================= -->
+  <!-- Layer 1 (Deepest Cosmic Circuit): Faint deep blue guide -->
+  <ellipse cx="600" cy="438" rx="465" ry="226" fill="none" stroke="#172554" stroke-width="1.2" stroke-dasharray="3,12" opacity="0.35"/>
+  
+  <!-- Layer 2 (Outer 3D Ring Guide): Structural track with segment ticks -->
+  <ellipse cx="600" cy="435" rx="430" ry="208" fill="none" stroke="#1e3a8a" stroke-width="1.8" stroke-dasharray="14,14" opacity="0.5"/>
+
+  <!-- Layer 3 (Deep Gradient Ribbon): Lower-mid tone track for depth shadow -->
+  <ellipse cx="600" cy="445" rx="390" ry="185" fill="none" stroke="url(#orbitDeep)" stroke-width="4" opacity="0.6"/>
+  <ellipse cx="600" cy="442" rx="388" ry="182" fill="none" stroke="url(#orbitMid)" stroke-width="1.8" opacity="0.75"/>
+
+  <!-- Layer 4 (Main 3D Primary Highway): Floating vibrant cyan-glow track -->
+  <ellipse cx="600" cy="436" rx="355" ry="169" fill="none" stroke="#0284c7" stroke-width="3" opacity="0.4"/>
+  <ellipse cx="600" cy="436" rx="355" ry="169" fill="none" stroke="url(#orbitBright)" stroke-width="2" filter="url(#glow)"/>
+
+  <!-- Layer 5 (Inner Fine Digital Guides): Crisp thin markings -->
+  <ellipse cx="600" cy="430" rx="318" ry="148" fill="none" stroke="#0369a1" stroke-width="1.2" stroke-dasharray="4,8" opacity="0.55"/>
+  <ellipse cx="600" cy="425" rx="275" ry="126" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="80 20 40 15 120 30" opacity="0.4"/>
+
+  <!-- Layer 6 (3D Concentric Core Ring): Stepped platform base -->
+  <ellipse cx="600" cy="426" rx="235" ry="105" fill="#020817" fill-opacity="0.8"/>
+  <ellipse cx="600" cy="422" rx="235" ry="105" fill="none" stroke="#0ea5e9" stroke-width="2.2" opacity="0.85" filter="url(#glow)"/>
+  <ellipse cx="600" cy="422" rx="226" ry="98" fill="#0b1d3a" fill-opacity="0.65" stroke="#0284c7" stroke-width="1.2"/>
+
+  <!-- Stationary Micro Tick Markers along the track -->
+  <g stroke="#38bdf8" stroke-width="1.2" opacity="0.6">
+    <line x1="955" y1="436" x2="963" y2="436"/>
+    <line x1="245" y1="436" x2="237" y2="436"/>
+    <line x1="600" y1="267" x2="600" y2="259"/>
+    <line x1="600" y1="605" x2="600" y2="613"/>
+  </g>
+
+  <!-- ================= TRAVELING ARROW: CRUISING ALONG THE 3D TRACK ================= -->
+  <g filter="url(#arrowHeadGlow)">
+    <g>
+      <animateMotion dur="10s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#flightTrack"/>
+      </animateMotion>
+      <!-- Comet Tail -->
+      <line x1="-38" y1="0" x2="-6" y2="0" stroke="url(#cometTail)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="-24" y1="-2" x2="-10" y2="-1" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="-24" y1="2" x2="-10" y2="1" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <path d="M -14 -6 L -7 0 L -14 6" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+      <path d="M -7 -8 L 8 0 L -7 8 L -3 0 Z" fill="#ffffff" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"/>
+      <circle cx="8" cy="0" r="3" fill="#bae6fd" filter="url(#glow)"/>
+    </g>
+  </g>
+
+  <g filter="url(#arrowHeadGlow)">
+    <g>
+      <animateMotion dur="10s" begin="-5s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#flightTrack"/>
+      </animateMotion>
+      <line x1="-38" y1="0" x2="-6" y2="0" stroke="url(#cometTail)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="-24" y1="-2" x2="-10" y2="-1" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="-24" y1="2" x2="-10" y2="1" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <path d="M -14 -6 L -7 0 L -14 6" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+      <path d="M -7 -8 L 8 0 L -7 8 L -3 0 Z" fill="#ffffff" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"/>
+      <circle cx="8" cy="0" r="3" fill="#bae6fd" filter="url(#glow)"/>
+    </g>
+  </g>
+
+  <!-- Static directional chevrons -->
+  <g opacity="0.45" stroke="#38bdf8" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 850 355 L 868 370 L 852 380"/>
+    <path d="M 585 606 L 605 605 L 595 593"/>
+    <path d="M 335 500 L 322 480 L 340 472"/>
+  </g>
+
+  <!-- ================= CENTRAL ISOMETRIC 3D CORE ================= -->
+  <!-- 3D Holographic Vertical Emitter Beam -->
+  <polygon points="555,430 645,430 630,230 570,230" fill="url(#lightBeam)"/>
+
+  <!-- Vertical Coordinate Lines -->
+  <g opacity="0.45">
+    <line x1="555" y1="260" x2="555" y2="445" stroke="#38bdf8" stroke-width="1.2"/>
+    <line x1="600" y1="230" x2="600" y2="445" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="645" y1="260" x2="645" y2="445" stroke="#38bdf8" stroke-width="1.2"/>
+  </g>
+
+  <!-- 3D Stepped Crystal Plinth -->
+  <g transform="translate(600, 420)" filter="url(#shadow3D)">
+    <polygon points="-70,0 0,-34 70,0 0,34" fill="#081b3d" stroke="#0284c7" stroke-width="1.5"/>
+    <polygon points="-70,0 0,34 0,46 -70,12" fill="#05122b" stroke="#0369a1" stroke-width="1"/>
+    <polygon points="0,34 70,0 70,12 0,46" fill="#030b1c" stroke="#0284c7" stroke-width="1"/>
+  </g>
+
+  <!-- Central Floating 3D Octagonal Crystal Core -->
+  <g transform="translate(600, 385)" filter="url(#intenseGlow)">
+    <polygon points="0,-58 58,-29 0,0 -58,-29" fill="url(#cubeTop3D)" stroke="#f0f9ff" stroke-width="2"/>
+    <polygon points="-58,-29 0,0 0,58 -58,29" fill="url(#cubeLeft3D)" stroke="#38bdf8" stroke-width="2"/>
+    <polygon points="0,0 58,-29 58,29 0,58" fill="url(#cubeRight3D)" stroke="#0284c7" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="58" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+  </g>
+
+  <!-- Central Core 3D Overlay Floating Badge Title: ENLARGED PROMINENT SIZES -->
+  <g text-anchor="middle" font-family="'WenQuanYi Zen Hei', 'Microsoft YaHei', sans-serif" filter="url(#shadow3D)">
+    <!-- 3D Beveled Container - Expanded to fit font-size 30 and 19 -->
+    <ellipse cx="600" cy="466" rx="188" ry="46" fill="#030b1c" fill-opacity="0.96" stroke="url(#platRim3D)" stroke-width="2.5" filter="url(#glow)"/>
+    <ellipse cx="600" cy="464" rx="180" ry="40" fill="none" stroke="#38bdf8" stroke-width="1.2" opacity="0.6"/>
+    <!-- Center Typography: Enlarged to 30px and 19px bold -->
+    <text x="600" y="456" fill="#ffffff" font-size="30" font-weight="bold" letter-spacing="2.5">全链路数据要素</text>
+    <text x="600" y="486" fill="#38bdf8" font-size="19" font-weight="bold" letter-spacing="2">业务集约协同中枢</text>
+  </g>
+
+  <!-- ================= STATION 1: TOP (数据存储与治理) ================= -->
+  <g id="station-storage" transform="translate(560, 135)">
+    <!-- 3D Stepped Cylindrical Podium Base -->
+    <g filter="url(#shadow3D)">
+      <ellipse cx="30" cy="106" rx="58" ry="19" fill="#020817" fill-opacity="0.9"/>
+      <path d="M -28 97 A 58 19 0 0 0 88 97 L 88 104 A 58 19 0 0 1 -28 104 Z" fill="url(#platSide3D)" stroke="#0369a1" stroke-width="1.5"/>
+      <ellipse cx="30" cy="97" rx="58" ry="19" fill="url(#platTop3D)" stroke="url(#platRim3D)" stroke-width="2.5" filter="url(#glow)"/>
+      <ellipse cx="30" cy="93" rx="42" ry="14" fill="#0284c7" fill-opacity="0.75" stroke="#7dd3fc" stroke-width="2"/>
+    </g>
+
+    <!-- Floating 3D Hologram Icon -->
+    <g transform="translate(18, 67)" filter="url(#glow)">
+      <circle cx="12" cy="12" r="18" fill="#081d3f" stroke="#38bdf8" stroke-width="2.2"/>
+      <path d="M 6 6 L 18 6 L 18 13 C 18 18 12 20.5 12 20.5 C 12 20.5 6 18 6 13 Z" fill="#38bdf8"/>
+    </g>
+
+    <!-- Title 3D Pill Badge: Enlarged text (18.5px bold) -->
+    <g filter="url(#shadow3D)">
+      <rect x="-48" y="14" width="156" height="38" rx="10" fill="url(#badgeGrad3D)" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+      <rect x="-46" y="16" width="152" height="2" rx="1" fill="#7dd3fc" opacity="0.8"/>
+      <text x="30" y="39" fill="#ffffff" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="18.5" font-weight="bold" text-anchor="middle">数据存储与治理</text>
+    </g>
+
+    <!-- Connected 3D Frosted Glass Card (Right): Enlarged to fit 15.5px bold -->
+    <g transform="translate(100, 44)" filter="url(#cardShadow3D)">
+      <path d="M -15 28 L 0 28" stroke="#38bdf8" stroke-width="2.2"/>
+      <circle cx="-15" cy="28" r="3" fill="#38bdf8"/>
+      <rect x="0" y="0" width="190" height="106" rx="10" fill="url(#cardGrad3D)" stroke="url(#cardBorder3D)" stroke-width="1.8" filter="url(#glow)"/>
+      <line x1="1" y1="2" x2="189" y2="2" stroke="#7dd3fc" stroke-width="1" opacity="0.5"/>
+      <g font-family="'WenQuanYi Zen Hei', sans-serif" font-size="15.5" font-weight="bold" fill="#f1f5f9">
+        <g transform="translate(14, 28)">
+          <rect x="0" y="-11" width="13" height="13" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">天枢数据治理平台</text>
+        </g>
+        <g transform="translate(14, 58)">
+          <rect x="0" y="-11" width="13" height="13" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">数据标注平台</text>
+        </g>
+        <g transform="translate(14, 88)">
+          <rect x="0" y="-11" width="13" height="13" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">数据集管理平台</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= STATION 2: RIGHT (数据开发与利用) ================= -->
+  <g id="station-dev" transform="translate(850, 310)">
+    <!-- 3D Stepped Cylindrical Podium Base -->
+    <g filter="url(#shadow3D)">
+      <ellipse cx="40" cy="106" rx="58" ry="19" fill="#020817" fill-opacity="0.9"/>
+      <path d="M -18 97 A 58 19 0 0 0 98 97 L 98 104 A 58 19 0 0 1 -18 104 Z" fill="url(#platSide3D)" stroke="#0369a1" stroke-width="1.5"/>
+      <ellipse cx="40" cy="97" rx="58" ry="19" fill="url(#platTop3D)" stroke="url(#platRim3D)" stroke-width="2.5" filter="url(#glow)"/>
+      <ellipse cx="40" cy="93" rx="42" ry="14" fill="#0284c7" fill-opacity="0.75" stroke="#7dd3fc" stroke-width="2"/>
+    </g>
+
+    <!-- Floating 3D Hologram Icon -->
+    <g transform="translate(28, 67)" filter="url(#glow)">
+      <circle cx="12" cy="12" r="18" fill="#081d3f" stroke="#38bdf8" stroke-width="2.2"/>
+      <text x="12" y="18" fill="#38bdf8" font-family="'Courier New', monospace" font-size="15" font-weight="bold" text-anchor="middle">&lt;/&gt;</text>
+    </g>
+
+    <!-- Title 3D Pill Badge: Enlarged text (18.5px bold) -->
+    <g filter="url(#shadow3D)">
+      <rect x="-38" y="14" width="156" height="38" rx="10" fill="url(#badgeGrad3D)" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+      <rect x="-36" y="16" width="152" height="2" rx="1" fill="#7dd3fc" opacity="0.8"/>
+      <text x="40" y="39" fill="#ffffff" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="18.5" font-weight="bold" text-anchor="middle">数据开发与利用</text>
+    </g>
+
+    <!-- Connected 3D Frosted Glass Card (Right): Enlarged to fit 15.5px bold -->
+    <g transform="translate(105, 42)" filter="url(#cardShadow3D)">
+      <path d="M -15 28 L 0 28" stroke="#38bdf8" stroke-width="2.2"/>
+      <circle cx="-15" cy="28" r="3" fill="#38bdf8"/>
+      <rect x="0" y="0" width="185" height="162" rx="10" fill="url(#cardGrad3D)" stroke="url(#cardBorder3D)" stroke-width="1.8" filter="url(#glow)"/>
+      <line x1="1" y1="2" x2="184" y2="2" stroke="#7dd3fc" stroke-width="1" opacity="0.5"/>
+      <g font-family="'WenQuanYi Zen Hei', sans-serif" font-size="15.5" font-weight="bold" fill="#f1f5f9">
+        <g transform="translate(14, 28)">
+          <circle cx="6" cy="-4" r="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">协作开发平台</text>
+        </g>
+        <g transform="translate(14, 58)">
+          <circle cx="6" cy="-4" r="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">数据沙箱平台</text>
+        </g>
+        <g transform="translate(14, 88)">
+          <circle cx="6" cy="-4" r="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">数据集开发平台</text>
+        </g>
+        <g transform="translate(14, 118)">
+          <circle cx="6" cy="-4" r="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">EvayBI</text>
+        </g>
+        <g transform="translate(14, 148)">
+          <circle cx="6" cy="-4" r="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">智能体开发平台</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= STATION 3: BOTTOM RIGHT (数据可信流通) ================= -->
+  <g id="station-circ" transform="translate(735, 520)">
+    <!-- 3D Stepped Cylindrical Podium Base -->
+    <g filter="url(#shadow3D)">
+      <ellipse cx="40" cy="86" rx="58" ry="19" fill="#020817" fill-opacity="0.9"/>
+      <path d="M -18 77 A 58 19 0 0 0 98 77 L 98 84 A 58 19 0 0 1 -18 84 Z" fill="url(#platSide3D)" stroke="#0369a1" stroke-width="1.5"/>
+      <ellipse cx="40" cy="77" rx="58" ry="19" fill="url(#platTop3D)" stroke="url(#platRim3D)" stroke-width="2.5" filter="url(#glow)"/>
+      <ellipse cx="40" cy="73" rx="42" ry="14" fill="#0284c7" fill-opacity="0.75" stroke="#7dd3fc" stroke-width="2"/>
+    </g>
+
+    <!-- Floating 3D Hologram Icon -->
+    <g transform="translate(28, 47)" filter="url(#glow)">
+      <circle cx="12" cy="12" r="18" fill="#081d3f" stroke="#38bdf8" stroke-width="2.2"/>
+      <circle cx="8" cy="8" r="3" fill="#38bdf8"/>
+      <circle cx="16" cy="8" r="3" fill="#38bdf8"/>
+      <circle cx="12" cy="16" r="3" fill="#38bdf8"/>
+      <line x1="8" y1="8" x2="16" y2="8" stroke="#38bdf8" stroke-width="1.8"/>
+      <line x1="8" y1="8" x2="12" y2="16" stroke="#38bdf8" stroke-width="1.8"/>
+      <line x1="16" y1="8" x2="12" y2="16" stroke="#38bdf8" stroke-width="1.8"/>
+    </g>
+
+    <!-- Title 3D Pill Badge: Enlarged text (18.5px bold) -->
+    <g filter="url(#shadow3D)">
+      <rect x="-38" y="4" width="156" height="38" rx="10" fill="url(#badgeGrad3D)" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+      <rect x="-36" y="6" width="152" height="2" rx="1" fill="#7dd3fc" opacity="0.8"/>
+      <text x="40" y="29" fill="#ffffff" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="18.5" font-weight="bold" text-anchor="middle">数据可信流通</text>
+    </g>
+
+    <!-- Connected 3D Frosted Glass Card (Right): Enlarged to fit 15.5px bold -->
+    <g transform="translate(105, 42)" filter="url(#cardShadow3D)">
+      <path d="M -15 28 L 0 28" stroke="#38bdf8" stroke-width="2.2"/>
+      <circle cx="-15" cy="28" r="3" fill="#38bdf8"/>
+      <rect x="0" y="0" width="175" height="58" rx="10" fill="url(#cardGrad3D)" stroke="url(#cardBorder3D)" stroke-width="1.8" filter="url(#glow)"/>
+      <line x1="1" y1="2" x2="174" y2="2" stroke="#7dd3fc" stroke-width="1" opacity="0.5"/>
+      <g font-family="'WenQuanYi Zen Hei', sans-serif" font-size="15.5" font-weight="bold" fill="#f1f5f9" transform="translate(14, 36)">
+        <polygon points="6,1 12,4.5 12,11.5 6,15 0,11.5 0,4.5" fill="#38bdf8"/>
+        <text x="24" y="7">可信数据空间</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= STATION 4: BOTTOM LEFT (数据运营与服务) ================= -->
+  <g id="station-ops" transform="translate(265, 520)">
+    <!-- 3D Stepped Cylindrical Podium Base -->
+    <g filter="url(#shadow3D)">
+      <ellipse cx="140" cy="86" rx="58" ry="19" fill="#020817" fill-opacity="0.9"/>
+      <path d="M 82 77 A 58 19 0 0 0 198 77 L 198 84 A 58 19 0 0 1 82 84 Z" fill="url(#platSide3D)" stroke="#0369a1" stroke-width="1.5"/>
+      <ellipse cx="140" cy="77" rx="58" ry="19" fill="url(#platTop3D)" stroke="url(#platRim3D)" stroke-width="2.5" filter="url(#glow)"/>
+      <ellipse cx="140" cy="73" rx="42" ry="14" fill="#0284c7" fill-opacity="0.75" stroke="#7dd3fc" stroke-width="2"/>
+    </g>
+
+    <!-- Floating 3D Hologram Icon -->
+    <g transform="translate(128, 47)" filter="url(#glow)">
+      <circle cx="12" cy="12" r="18" fill="#081d3f" stroke="#38bdf8" stroke-width="2.2"/>
+      <line x1="7" y1="16" x2="7" y2="11" stroke="#38bdf8" stroke-width="2.5"/>
+      <line x1="12" y1="16" x2="12" y2="7" stroke="#38bdf8" stroke-width="2.5"/>
+      <line x1="17" y1="16" x2="17" y2="9" stroke="#38bdf8" stroke-width="2.5"/>
+    </g>
+
+    <!-- Title 3D Pill Badge: Enlarged text (18.5px bold) -->
+    <g filter="url(#shadow3D)">
+      <rect x="62" y="4" width="156" height="38" rx="10" fill="url(#badgeGrad3D)" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+      <rect x="64" y="6" width="152" height="2" rx="1" fill="#7dd3fc" opacity="0.8"/>
+      <text x="140" y="29" fill="#ffffff" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="18.5" font-weight="bold" text-anchor="middle">数据运营与服务</text>
+    </g>
+
+    <!-- Connected 3D Frosted Glass Card (Left): Enlarged to fit 15.5px bold -->
+    <g transform="translate(-125, 42)" filter="url(#cardShadow3D)">
+      <path d="M 185 28 L 205 28" stroke="#38bdf8" stroke-width="2.2"/>
+      <circle cx="205" cy="28" r="3" fill="#38bdf8"/>
+      <rect x="0" y="0" width="185" height="136" rx="10" fill="url(#cardGrad3D)" stroke="url(#cardBorder3D)" stroke-width="1.8" filter="url(#glow)"/>
+      <line x1="1" y1="2" x2="184" y2="2" stroke="#7dd3fc" stroke-width="1" opacity="0.5"/>
+      <g font-family="'WenQuanYi Zen Hei', sans-serif" font-size="15.5" font-weight="bold" fill="#f1f5f9">
+        <g transform="translate(14, 28)">
+          <rect x="0" y="-11" width="13" height="13" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">数据运营平台</text>
+        </g>
+        <g transform="translate(14, 58)">
+          <rect x="0" y="-11" width="13" height="13" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">数据服务平台</text>
+        </g>
+        <g transform="translate(14, 88)">
+          <rect x="0" y="-11" width="13" height="13" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">数据资产平台</text>
+        </g>
+        <g transform="translate(14, 118)">
+          <rect x="0" y="-11" width="13" height="13" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">数据一站式入表</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= STATION 5: LEFT (数据采集与汇聚) ================= -->
+  <!-- Positioned at translate(175, 310) -> card at translate(-145, 42), Card X is 175-145 = 30 to 215. Safe breathing room! -->
+  <g id="station-collect" transform="translate(175, 310)">
+    <!-- 3D Stepped Cylindrical Podium Base -->
+    <g filter="url(#shadow3D)">
+      <ellipse cx="140" cy="106" rx="58" ry="19" fill="#020817" fill-opacity="0.9"/>
+      <path d="M 82 97 A 58 19 0 0 0 198 97 L 198 104 A 58 19 0 0 1 82 104 Z" fill="url(#platSide3D)" stroke="#0369a1" stroke-width="1.5"/>
+      <ellipse cx="140" cy="97" rx="58" ry="19" fill="url(#platTop3D)" stroke="url(#platRim3D)" stroke-width="2.5" filter="url(#glow)"/>
+      <ellipse cx="140" cy="93" rx="42" ry="14" fill="#0284c7" fill-opacity="0.75" stroke="#7dd3fc" stroke-width="2"/>
+    </g>
+
+    <!-- Floating 3D Hologram Icon -->
+    <g transform="translate(128, 67)" filter="url(#glow)">
+      <circle cx="12" cy="12" r="18" fill="#081d3f" stroke="#38bdf8" stroke-width="2.2"/>
+      <ellipse cx="12" cy="8.5" rx="8" ry="3.5" fill="none" stroke="#38bdf8" stroke-width="1.8"/>
+      <path d="M 4 8.5 L 4 15.5 A 8 3.5 0 0 0 20 15.5 L 20 8.5" fill="none" stroke="#38bdf8" stroke-width="1.8"/>
+    </g>
+
+    <!-- Title 3D Pill Badge: Enlarged text (18.5px bold) -->
+    <g filter="url(#shadow3D)">
+      <rect x="62" y="14" width="156" height="38" rx="10" fill="url(#badgeGrad3D)" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+      <rect x="64" y="16" width="152" height="2" rx="1" fill="#7dd3fc" opacity="0.8"/>
+      <text x="140" y="39" fill="#ffffff" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="18.5" font-weight="bold" text-anchor="middle">数据采集与汇聚</text>
+    </g>
+
+    <!-- Connected 3D Frosted Glass Card (Left): Enlarged to fit 15.5px bold -->
+    <g transform="translate(-145, 42)" filter="url(#cardShadow3D)">
+      <path d="M 185 28 L 205 28" stroke="#38bdf8" stroke-width="2.2"/>
+      <circle cx="205" cy="28" r="3" fill="#38bdf8"/>
+      <rect x="0" y="0" width="185" height="136" rx="10" fill="url(#cardGrad3D)" stroke="url(#cardBorder3D)" stroke-width="1.8" filter="url(#glow)"/>
+      <line x1="1" y1="2" x2="184" y2="2" stroke="#7dd3fc" stroke-width="1" opacity="0.5"/>
+      <g font-family="'WenQuanYi Zen Hei', sans-serif" font-size="15.5" font-weight="bold" fill="#f1f5f9">
+        <g transform="translate(14, 28)">
+          <polygon points="6,1 12,10 0,10" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">数据集成平台</text>
+        </g>
+        <g transform="translate(14, 58)">
+          <polygon points="6,1 12,10 0,10" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">数据填报平台</text>
+        </g>
+        <g transform="translate(14, 88)">
+          <polygon points="6,1 12,10 0,10" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">物联网平台</text>
+        </g>
+        <g transform="translate(14, 118)">
+          <polygon points="6,1 12,10 0,10" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
+          <text x="22" y="1">互联网采集系统</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= BOTTOM VALUE CHAIN SUMMARY (Clean & Borderless, moved down) ================= -->
+  <g transform="translate(600, 755)" text-anchor="middle">
+    <!-- Clean, borderless typographic presentation with elegant subtle glow -->
+    <text x="0" y="0" fill="#bae6fd" font-family="'WenQuanYi Zen Hei', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="bold" letter-spacing="4" filter="url(#glow)">
+      数据汇聚<tspan fill="#38bdf8" font-size="20"> · </tspan>智能治理<tspan fill="#38bdf8" font-size="20"> · </tspan>协作开发<tspan fill="#38bdf8" font-size="20"> · </tspan>可信流通<tspan fill="#38bdf8" font-size="20"> · </tspan>价值运营
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,354 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#0e2a5d" stop-opacity="0.9"/>
+      <stop offset="45%" stop-color="#071738" stop-opacity="0.95"/>
+      <stop offset="85%" stop-color="#020817" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#01040f" stop-opacity="1"/>
+    </radialGradient>
+
+    <radialGradient id="centerCoreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.45"/>
+      <stop offset="40%" stop-color="#0284c7" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.3"/>
+      <stop offset="30%" stop-color="#38bdf8" stop-opacity="0.85"/>
+      <stop offset="70%" stop-color="#60a5fa" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1d3a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#061226" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0c2552"/>
+      <stop offset="100%" stop-color="#143c7d"/>
+    </linearGradient>
+
+    <!-- Platform Gradients -->
+    <linearGradient id="platTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0a192f" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="platRim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <!-- Cube Gradients -->
+    <linearGradient id="cubeTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="cubeLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="cubeRight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <!-- Filter for Neon Glow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="intenseGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur1"/>
+      <feGaussianBlur stdDeviation="3" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <!-- Background transparent -->
+
+  <!-- Subtle Cyber Flow Wave Lines at Bottom -->
+  <g opacity="0.3" stroke="#0284c7" stroke-width="0.75" fill="none">
+    <path d="M -50 720 Q 250 680, 550 740 T 1250 710"/>
+    <path d="M -50 735 Q 300 700, 650 755 T 1250 730"/>
+    <path d="M -50 750 Q 200 720, 600 770 T 1250 745"/>
+    <path d="M -50 765 Q 350 730, 700 780 T 1250 760"/>
+    <path d="M -50 700 Q 200 660, 500 725 T 1250 690" stroke="#38bdf8" opacity="0.5"/>
+  </g>
+
+  <!-- Background Ambient Glow behind central loop -->
+  <ellipse cx="600" cy="420" rx="360" ry="190" fill="url(#centerCoreGlow)"/>
+
+  <!-- ================= ORBITAL HIGH-TECH TRACKS ================= -->
+  <!-- Outer faint track -->
+  <ellipse cx="600" cy="430" rx="430" ry="210" fill="none" stroke="#1e3a8a" stroke-width="1.5" stroke-dasharray="6,8" opacity="0.4"/>
+
+  <!-- Main Concentric Glowing Cyan Rings with Depth/Perspective -->
+  <ellipse cx="600" cy="440" rx="380" ry="180" fill="none" stroke="#0369a1" stroke-width="3" opacity="0.5"/>
+  <ellipse cx="600" cy="438" rx="378" ry="178" fill="none" stroke="url(#orbitGrad)" stroke-width="2" filter="url(#glow)"/>
+  <ellipse cx="600" cy="432" rx="350" ry="160" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="140 30 90 25 180 40" filter="url(#glow)"/>
+  <ellipse cx="600" cy="426" rx="320" ry="142" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.7"/>
+
+  <!-- Inner Concentric Core Ring -->
+  <ellipse cx="600" cy="420" rx="230" ry="102" fill="none" stroke="#38bdf8" stroke-width="2.5" filter="url(#glow)"/>
+  <ellipse cx="600" cy="420" rx="222" ry="96" fill="#0b1d3a" fill-opacity="0.4" stroke="#0284c7" stroke-width="1"/>
+
+  <!-- Clockwise Flow Indicator Arrows on Track -->
+  <!-- Top Right flow arrow -->
+  <path d="M 800 345 L 830 360 L 812 368" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <!-- Bottom Right flow arrow -->
+  <path d="M 580 575 L 610 576 L 595 565" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <!-- Left flow arrow -->
+  <path d="M 315 480 L 305 450 L 322 460" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+
+  <!-- ================= CENTRAL ISOMETRIC 3D CORE ================= -->
+  <!-- Vertical Holographic Light Column -->
+  <g opacity="0.35">
+    <line x1="560" y1="280" x2="560" y2="440" stroke="#38bdf8" stroke-width="1"/>
+    <line x1="600" y1="260" x2="600" y2="440" stroke="#38bdf8" stroke-width="1.5"/>
+    <line x1="640" y1="280" x2="640" y2="440" stroke="#38bdf8" stroke-width="1"/>
+  </g>
+
+  <!-- Central 3D Cube Crystal Base -->
+  <g transform="translate(600, 395)" filter="url(#intenseGlow)">
+    <!-- Top Face of Cube -->
+    <polygon points="0,-48 44,-24 0,0 -44,-24" fill="url(#cubeTop)" stroke="#bae6fd" stroke-width="1.5"/>
+    <!-- Left Face of Cube -->
+    <polygon points="-44,-24 0,0 0,48 -44,24" fill="url(#cubeLeft)" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Right Face of Cube -->
+    <polygon points="0,0 44,-24 44,24 0,48" fill="url(#cubeRight)" stroke="#0284c7" stroke-width="1.5"/>
+  </g>
+
+  <!-- Central Core Overlay Banner Title -->
+  <g text-anchor="middle" font-family="'WenQuanYi Zen Hei', 'Microsoft YaHei', sans-serif">
+    <!-- Glow Backdrop for Text -->
+    <ellipse cx="600" cy="460" rx="140" ry="32" fill="#030b1c" fill-opacity="0.85" stroke="#0284c7" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="600" y="453" fill="#ffffff" font-size="22" font-weight="bold" letter-spacing="2">全链路数据要素</text>
+    <text x="600" y="475" fill="#38bdf8" font-size="14" font-weight="bold" letter-spacing="1">业务集约协同中枢</text>
+  </g>
+
+  <!-- ================= STATION 1: TOP (数据存储与治理) ================= -->
+  <g id="station-storage" transform="translate(560, 150)">
+    <!-- Platform 3D Disc Base -->
+    <ellipse cx="30" cy="90" rx="46" ry="18" fill="url(#platTop)" stroke="url(#platRim)" stroke-width="2.5" filter="url(#glow)"/>
+    <ellipse cx="30" cy="85" rx="34" ry="12" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Icon: Shield -->
+    <g transform="translate(20, 68)">
+      <circle cx="10" cy="10" r="14" fill="#0c2552" stroke="#38bdf8" stroke-width="1.5"/>
+      <path d="M 6 6 L 14 6 L 14 11 C 14 14 10 16 10 16 C 10 16 6 14 6 11 Z" fill="#38bdf8"/>
+    </g>
+
+    <!-- Title Badge -->
+    <rect x="-30" y="20" width="120" height="28" rx="6" fill="url(#badgeGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="30" y="39" fill="#ffffff" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">数据存储与治理</text>
+
+    <!-- Connected Card (Right) -->
+    <g transform="translate(90, 48)">
+      <!-- Line to card -->
+      <path d="M -10 20 L 0 20" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="0" y="0" width="146" height="74" rx="8" fill="url(#cardGrad)" stroke="#1e40af" stroke-width="1.2" filter="url(#glow)"/>
+      <g font-family="'WenQuanYi Zen Hei', sans-serif" font-size="11" fill="#cbd5e1">
+        <!-- Item 1 -->
+        <g transform="translate(10, 20)">
+          <rect x="0" y="-8" width="10" height="10" rx="2" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">天枢数据治理平台</text>
+        </g>
+        <!-- Item 2 -->
+        <g transform="translate(10, 40)">
+          <rect x="0" y="-8" width="10" height="10" rx="2" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">数据标注平台</text>
+        </g>
+        <!-- Item 3 -->
+        <g transform="translate(10, 60)">
+          <rect x="0" y="-8" width="10" height="10" rx="2" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">数据集管理平台</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= STATION 2: RIGHT (数据开发与利用) ================= -->
+  <g id="station-dev" transform="translate(860, 310)">
+    <!-- Platform 3D Disc Base -->
+    <ellipse cx="40" cy="90" rx="46" ry="18" fill="url(#platTop)" stroke="url(#platRim)" stroke-width="2.5" filter="url(#glow)"/>
+    <ellipse cx="40" cy="85" rx="34" ry="12" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Icon: Code Bracket </> -->
+    <g transform="translate(30, 68)">
+      <circle cx="10" cy="10" r="14" fill="#0c2552" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="10" y="14" fill="#38bdf8" font-family="'Courier New', monospace" font-size="11" font-weight="bold" text-anchor="middle">&lt;/&gt;</text>
+    </g>
+
+    <!-- Title Badge -->
+    <rect x="-20" y="20" width="120" height="28" rx="6" fill="url(#badgeGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="40" y="39" fill="#ffffff" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">数据开发与利用</text>
+
+    <!-- Connected Card (Right) -->
+    <g transform="translate(100, 48)">
+      <path d="M -15 20 L 0 20" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="0" y="0" width="138" height="114" rx="8" fill="url(#cardGrad)" stroke="#1e40af" stroke-width="1.2" filter="url(#glow)"/>
+      <g font-family="'WenQuanYi Zen Hei', sans-serif" font-size="11" fill="#cbd5e1">
+        <g transform="translate(10, 20)">
+          <circle cx="5" cy="-3" r="4" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="15" y="0">协作开发平台</text>
+        </g>
+        <g transform="translate(10, 40)">
+          <circle cx="5" cy="-3" r="4" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="15" y="0">数据沙箱平台</text>
+        </g>
+        <g transform="translate(10, 60)">
+          <circle cx="5" cy="-3" r="4" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="15" y="0">数据集开发平台</text>
+        </g>
+        <g transform="translate(10, 80)">
+          <circle cx="5" cy="-3" r="4" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="15" y="0">EvayBI</text>
+        </g>
+        <g transform="translate(10, 100)">
+          <circle cx="5" cy="-3" r="4" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="15" y="0">智能体开发平台</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= STATION 3: BOTTOM RIGHT (数据可信流通) ================= -->
+  <g id="station-circ" transform="translate(740, 520)">
+    <!-- Platform 3D Disc Base -->
+    <ellipse cx="40" cy="70" rx="46" ry="18" fill="url(#platTop)" stroke="url(#platRim)" stroke-width="2.5" filter="url(#glow)"/>
+    <ellipse cx="40" cy="65" rx="34" ry="12" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Icon: Network Node / Share -->
+    <g transform="translate(30, 48)">
+      <circle cx="10" cy="10" r="14" fill="#0c2552" stroke="#38bdf8" stroke-width="1.5"/>
+      <circle cx="7" cy="7" r="2" fill="#38bdf8"/>
+      <circle cx="13" cy="7" r="2" fill="#38bdf8"/>
+      <circle cx="10" cy="13" r="2" fill="#38bdf8"/>
+      <line x1="7" y1="7" x2="13" y2="7" stroke="#38bdf8" stroke-width="1"/>
+      <line x1="7" y1="7" x2="10" y2="13" stroke="#38bdf8" stroke-width="1"/>
+      <line x1="13" y1="7" x2="10" y2="13" stroke="#38bdf8" stroke-width="1"/>
+    </g>
+
+    <!-- Title Badge -->
+    <rect x="-10" y="10" width="115" height="28" rx="6" fill="url(#badgeGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="47" y="29" fill="#ffffff" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">数据可信流通</text>
+
+    <!-- Connected Card (Right) -->
+    <g transform="translate(100, 45)">
+      <path d="M -15 20 L 0 20" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="0" y="0" width="125" height="42" rx="8" fill="url(#cardGrad)" stroke="#1e40af" stroke-width="1.2" filter="url(#glow)"/>
+      <g font-family="'WenQuanYi Zen Hei', sans-serif" font-size="11" fill="#cbd5e1" transform="translate(12, 26)">
+        <polygon points="5,2 9,4 9,8 5,11 1,8 1,4" fill="#38bdf8" opacity="0.8"/>
+        <text x="16" y="8">可信数据空间</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= STATION 4: BOTTOM LEFT (数据运营与服务) ================= -->
+  <g id="station-ops" transform="translate(250, 520)">
+    <!-- Platform 3D Disc Base -->
+    <ellipse cx="140" cy="70" rx="46" ry="18" fill="url(#platTop)" stroke="url(#platRim)" stroke-width="2.5" filter="url(#glow)"/>
+    <ellipse cx="140" cy="65" rx="34" ry="12" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Icon: Bar Chart -->
+    <g transform="translate(130, 48)">
+      <circle cx="10" cy="10" r="14" fill="#0c2552" stroke="#38bdf8" stroke-width="1.5"/>
+      <line x1="6" y1="13" x2="6" y2="9" stroke="#38bdf8" stroke-width="1.8"/>
+      <line x1="10" y1="13" x2="10" y2="6" stroke="#38bdf8" stroke-width="1.8"/>
+      <line x1="14" y1="13" x2="14" y2="8" stroke="#38bdf8" stroke-width="1.8"/>
+    </g>
+
+    <!-- Title Badge -->
+    <rect x="80" y="10" width="120" height="28" rx="6" fill="url(#badgeGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="140" y="29" fill="#ffffff" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">数据运营与服务</text>
+
+    <!-- Connected Card (Left) -->
+    <g transform="translate(-70, 45)">
+      <path d="M 148 20 L 160 20" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="0" y="0" width="144" height="96" rx="8" fill="url(#cardGrad)" stroke="#1e40af" stroke-width="1.2" filter="url(#glow)"/>
+      <g font-family="'WenQuanYi Zen Hei', sans-serif" font-size="11" fill="#cbd5e1">
+        <g transform="translate(10, 20)">
+          <rect x="0" y="-8" width="10" height="10" rx="2" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">数据运营平台</text>
+        </g>
+        <g transform="translate(10, 42)">
+          <rect x="0" y="-8" width="10" height="10" rx="2" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">数据服务平台</text>
+        </g>
+        <g transform="translate(10, 64)">
+          <rect x="0" y="-8" width="10" height="10" rx="2" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">数据资产平台</text>
+        </g>
+        <g transform="translate(10, 86)">
+          <rect x="0" y="-8" width="10" height="10" rx="2" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">数据一站式入表</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= STATION 5: LEFT (数据采集与汇聚) ================= -->
+  <g id="station-collect" transform="translate(150, 310)">
+    <!-- Platform 3D Disc Base -->
+    <ellipse cx="140" cy="90" rx="46" ry="18" fill="url(#platTop)" stroke="url(#platRim)" stroke-width="2.5" filter="url(#glow)"/>
+    <ellipse cx="140" cy="85" rx="34" ry="12" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Icon: Database Stack Cylinder -->
+    <g transform="translate(130, 68)">
+      <circle cx="10" cy="10" r="14" fill="#0c2552" stroke="#38bdf8" stroke-width="1.5"/>
+      <ellipse cx="10" cy="7" rx="6" ry="2.5" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+      <path d="M 4 7 L 4 13 A 6 2.5 0 0 0 16 13 L 16 7" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+    </g>
+
+    <!-- Title Badge -->
+    <rect x="80" y="20" width="120" height="28" rx="6" fill="url(#badgeGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="140" y="39" fill="#ffffff" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">数据采集与汇聚</text>
+
+    <!-- Connected Card (Left) -->
+    <g transform="translate(-70, 48)">
+      <path d="M 148 20 L 160 20" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="0" y="0" width="144" height="96" rx="8" fill="url(#cardGrad)" stroke="#1e40af" stroke-width="1.2" filter="url(#glow)"/>
+      <g font-family="'WenQuanYi Zen Hei', sans-serif" font-size="11" fill="#cbd5e1">
+        <g transform="translate(10, 20)">
+          <polygon points="5,1 9,8 1,8" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">数据集成平台</text>
+        </g>
+        <g transform="translate(10, 42)">
+          <polygon points="5,1 9,8 1,8" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">数据填报平台</text>
+        </g>
+        <g transform="translate(10, 64)">
+          <polygon points="5,1 9,8 1,8" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">物联网平台</text>
+        </g>
+        <g transform="translate(10, 86)">
+          <polygon points="5,1 9,8 1,8" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="16" y="0">互联网采集系统</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= BOTTOM FOOTER MOTTO ================= -->
+  <g text-anchor="middle" font-family="'WenQuanYi Zen Hei', sans-serif" font-size="13" fill="#64748b" letter-spacing="4">
+    <text x="600" y="740">数据汇聚   ·   智能治理   ·   协同开发   ·   可信流通   ·   价值运营</text>
+  </g>
+</svg>

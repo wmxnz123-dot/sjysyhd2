@@ -4,8 +4,6 @@ import {
   Bell,
   ExternalLink,
   CheckCheck,
-  Shield,
-  HelpCircle,
   ChevronDown,
   Layers,
   ArrowRight,
@@ -182,15 +180,6 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Right Action Controls */}
           <div className="flex items-center gap-2.5">
-            {/* Quick link button to lifecycle */}
-            <button
-              onClick={() => onQuickNavigate('lifecycle-section')}
-              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 hover:text-blue-700 hover:bg-blue-50/80 rounded-md border border-slate-200/80 transition-colors cursor-pointer"
-            >
-              <Shield className="w-3.5 h-3.5 text-blue-600" />
-              <span>全链路视图</span>
-            </button>
-
             {/* Notification Center */}
             <div ref={notifRef} className="relative">
               <button
@@ -271,16 +260,6 @@ export const Header: React.FC<HeaderProps> = ({
                 </div>
               )}
             </div>
-
-            {/* Help / Guide button */}
-            <button
-              type="button"
-              onClick={() => onQuickNavigate('lifecycle-section')}
-              className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
-              title="全链路使用指南"
-            >
-              <HelpCircle className="w-4 h-4" />
-            </button>
 
             {/* User Profile Dropdown */}
             <div ref={userMenuRef} className="relative pl-3 border-l border-slate-200">

@@ -49,10 +49,12 @@ export const FavoriteSection: React.FC<FavoriteSectionProps> = ({
             ))}
           </div>
         ) : (
-          <div className="h-[66px] sm:h-[70px] px-3.5 flex items-center justify-center gap-2 bg-slate-50/70 rounded-xl border border-dashed border-slate-200 text-slate-500">
-            <Star className="w-4 h-4 text-slate-400 shrink-0" />
-            <span className="text-xs text-slate-600 font-medium">暂无收藏的常用系统</span>
-            <span className="text-[11px] text-slate-400">
+          <div className="py-5 sm:py-6 px-4 min-h-[88px] sm:min-h-[96px] flex flex-col items-center justify-center gap-1.5 bg-slate-50/70 rounded-xl border border-dashed border-slate-200 text-slate-500 text-center">
+            <div className="flex items-center gap-2">
+              <Star className="w-4 h-4 text-slate-400 shrink-0" />
+              <span className="text-xs sm:text-[13px] text-slate-600 font-medium">暂无收藏的常用系统</span>
+            </div>
+            <span className="text-[11px] sm:text-xs text-slate-400">
               （点击下方任意业务系统的星标，即可快速收藏至此处）
             </span>
           </div>
