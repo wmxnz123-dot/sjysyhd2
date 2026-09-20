@@ -70,27 +70,27 @@ const MOCK_ASSETS: CatalogAsset[] = [
   },
   {
     id: 'ast-4',
-    name: '工业母机传感器时序运行遥测数据',
+    name: '重点产业链工业能耗与排产填报归集数据',
     stageName: '数据采集与汇聚',
-    systemName: '物联网平台',
-    systemId: 'iot-platform',
-    domain: '先进制造 / 物联',
-    volume: '8.6 亿条测点',
-    securityLevel: '工业内部密级',
-    updateFreq: '秒级流上报',
-    description: '纳管全区高精数控机床振动、温度、电流主轴高频测点，赋能预测性维护。'
+    systemName: '数据填报平台',
+    systemId: 'data-reporting',
+    domain: '先进制造 / 填报',
+    volume: '128 家规上企业',
+    securityLevel: '政企内部共享',
+    updateFreq: '按月周期归集',
+    description: '纳管重点产业链能耗、产能负荷与重点设备排产填报指标，赋能产业链协同监测。'
   },
   {
     id: 'ast-5',
-    name: '医疗脱敏影像与病理特征资产集 (入表评估中)',
+    name: '医疗脱敏影像与病理特征资产集 (确权评估中)',
     stageName: '数据运营与服务',
-    systemName: '数据资产入表平台',
+    systemName: '数据资产平台',
     systemId: 'data-asset',
     domain: '医疗健康 / 资产',
     volume: '12 万例',
-    securityLevel: '入表合规审计',
+    securityLevel: '资产合规纳管',
     updateFreq: '季度确权',
-    description: '完成法律权属确权与三方价值评估，已进入2026年度无形资产合规入表核算流程。'
+    description: '完成法律权属确权与三方价值评估，已进入2026年度无形资产合规资产化流程。'
   }
 ];
 

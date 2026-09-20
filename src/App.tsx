@@ -68,7 +68,8 @@ export default function App() {
   const [favoriteSystemIds, setFavoriteSystemIds] = useState<string[]>(() => {
     try {
       const saved = localStorage.getItem('portal_favorite_systems');
-      return saved ? JSON.parse(saved) : INITIAL_FAVORITE_SYSTEM_IDS;
+      const loaded: string[] = saved ? JSON.parse(saved) : INITIAL_FAVORITE_SYSTEM_IDS;
+      return loaded.filter(id => ALL_SYSTEMS.some(s => s.id === id));
     } catch {
       return INITIAL_FAVORITE_SYSTEM_IDS;
     }

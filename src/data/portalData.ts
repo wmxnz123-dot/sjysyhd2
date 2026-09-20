@@ -3,22 +3,6 @@ import { LifecycleStage, SystemItem, TodoTask, RecentVisitItem, SystemNotificati
 export const ALL_SYSTEMS: SystemItem[] = [
   // 第一阶段：数据采集与汇聚
   {
-    id: 'data-integration',
-    name: '数据集成平台',
-    stageId: 'collection',
-    stageName: '数据采集与汇聚',
-    stageOrder: 1,
-    description: '支持异构数据源跨网高效抽取与实时CDC流式同步。',
-    coreCapability: '数据集成',
-    capabilityTags: ['数据集成', '数据交换', 'CDC流同步', '多源连接'],
-    iconName: 'DatabaseZap',
-    status: 'online',
-    recentActiveUsers: 142,
-    version: 'v4.3.0',
-    popularFeatures: ['千万级CDC实时同步', '全库整库迁移工具', '断点续传监控'],
-    routePath: '/systems/data-integration'
-  },
-  {
     id: 'data-reporting',
     name: '数据填报平台',
     stageId: 'collection',
@@ -33,38 +17,6 @@ export const ALL_SYSTEMS: SystemItem[] = [
     version: 'v3.2.1',
     popularFeatures: ['动态表单生成器', 'excel批量导入校验', '移动端填报分发'],
     routePath: '/systems/data-reporting'
-  },
-  {
-    id: 'iot-platform',
-    name: '物联网平台',
-    stageId: 'collection',
-    stageName: '数据采集与汇聚',
-    stageOrder: 1,
-    description: '支持海量传感器与工业设备高频时序数据秒级接入。',
-    coreCapability: '物联采集',
-    capabilityTags: ['物联采集', '设备影子', '边缘计算', '时序遥测'],
-    iconName: 'Cpu',
-    status: 'online',
-    recentActiveUsers: 57,
-    version: 'v5.1.0',
-    popularFeatures: ['海量并发设备接入', '物模型定义中心', '设备规则告警引擎'],
-    routePath: '/systems/iot-platform'
-  },
-  {
-    id: 'web-scraping',
-    name: '互联网采集系统',
-    stageId: 'collection',
-    stageName: '数据采集与汇聚',
-    stageOrder: 1,
-    description: '合规采集公开互联网舆情情报并智能化结构入库。',
-    coreCapability: '互联网采集',
-    capabilityTags: ['互联网采集', '智能解析', '反爬策略', '文本结构化'],
-    iconName: 'Globe',
-    status: 'online',
-    recentActiveUsers: 34,
-    version: 'v2.8.4',
-    popularFeatures: ['合规爬虫沙箱', '智能DOM清洗萃取', '全网多信源调度'],
-    routePath: '/systems/web-scraping'
   },
 
   // 第二阶段：数据存储与治理
@@ -83,38 +35,6 @@ export const ALL_SYSTEMS: SystemItem[] = [
     version: 'v6.0.2',
     popularFeatures: ['全链路端到端血缘', '自动质量核查规则库', '数据安全分类分级'],
     routePath: '/systems/tianshu-governance'
-  },
-  {
-    id: 'data-annotation',
-    name: '数据标注平台',
-    stageId: 'governance',
-    stageName: '数据存储与治理',
-    stageOrder: 2,
-    description: '提供多模态数据人机协同标注与质检验收流水线。',
-    coreCapability: '数据标注',
-    capabilityTags: ['数据标注', '多模态标注', 'AI辅助预标', '验收质检'],
-    iconName: 'Tag',
-    status: 'online',
-    recentActiveUsers: 76,
-    version: 'v3.5.0',
-    popularFeatures: ['大模型智能预标注', '多人协同任务盲审', '质检抽样打分流水线'],
-    routePath: '/systems/data-annotation'
-  },
-  {
-    id: 'dataset-management',
-    name: '数据集管理平台',
-    stageId: 'governance',
-    stageName: '数据存储与治理',
-    stageOrder: 2,
-    description: '提供多模态高质量数据集统一纳管、版本编目、质量评估与切分发布。',
-    coreCapability: '数据集管理',
-    capabilityTags: ['数据集管理', '元数据治理', '数据标准', '血缘图谱'],
-    iconName: 'Layers',
-    status: 'online',
-    recentActiveUsers: 195,
-    version: 'v4.1.0',
-    popularFeatures: ['多模态数据集编目与版本管控', '数据集质量评分与样本抽检', '一键切分训练集/验证集/测试集'],
-    routePath: '/systems/dataset-management'
   },
 
   // 第三阶段：数据开发与利用
@@ -151,24 +71,24 @@ export const ALL_SYSTEMS: SystemItem[] = [
     routePath: '/systems/data-sandbox'
   },
   {
-    id: 'dataset-dev',
-    name: '数据集开发平台',
+    id: 'data-annotation',
+    name: '数据标注平台',
     stageId: 'development',
     stageName: '数据开发与利用',
     stageOrder: 3,
-    description: '专注高质量语料清洗、特征工程与模型训练集提炼。',
-    coreCapability: '数据集开发',
-    capabilityTags: ['数据集开发', '特征工程', '清洗增强', '模型训练集'],
-    iconName: 'Boxes',
+    description: '提供多模态数据人机协同标注与质检验收流水线。',
+    coreCapability: '数据标注',
+    capabilityTags: ['数据标注', '多模态标注', 'AI辅助预标', '验收质检'],
+    iconName: 'Tag',
     status: 'online',
-    recentActiveUsers: 147,
-    version: 'v4.0.0',
-    popularFeatures: ['高质量语料清洗算子', '特征库在线/离线同步', '样本平衡增强处理'],
-    routePath: '/systems/dataset-dev'
+    recentActiveUsers: 76,
+    version: 'v3.5.0',
+    popularFeatures: ['大模型智能预标注', '多人协同任务盲审', '质检抽样打分流水线'],
+    routePath: '/systems/data-annotation'
   },
   {
     id: 'evay-bi',
-    name: 'EvayBI',
+    name: 'EvayBI平台',
     stageId: 'development',
     stageName: '数据开发与利用',
     stageOrder: 3,
@@ -252,7 +172,7 @@ export const ALL_SYSTEMS: SystemItem[] = [
   },
   {
     id: 'data-asset',
-    name: '数据资产入表平台',
+    name: '数据资产平台',
     stageId: 'operation',
     stageName: '数据运营与服务',
     stageOrder: 5,
@@ -345,22 +265,22 @@ export const INITIAL_FAVORITE_SYSTEM_IDS = [
   'tianshu-governance',
   'data-service',
   'data-sandbox',
-  'dataset-dev'
+  'agent-dev'
 ];
 
 export const INITIAL_RECENT_VISITS: RecentVisitItem[] = [
   {
     id: 'rec-1',
-    systemId: 'iot-platform',
-    systemName: '物联网平台',
-    stageName: '数据采集与汇聚',
+    systemId: 'tianshu-governance',
+    systemName: '天枢数据治理平台',
+    stageName: '数据存储与治理',
     visitedAt: '30分钟前',
-    actionSummary: '巡检【工业传感器测点】时序流计算告警阈值'
+    actionSummary: '复核【核心户籍与企业法人】数据质量稽核报告'
   },
   {
     id: 'rec-2',
     systemId: 'evay-bi',
-    systemName: 'EvayBI',
+    systemName: 'EvayBI平台',
     stageName: '数据开发与利用',
     visitedAt: '1小时前',
     actionSummary: '导出【全省数据要素利用效能总览】交互式大屏'
@@ -375,11 +295,11 @@ export const INITIAL_RECENT_VISITS: RecentVisitItem[] = [
   },
   {
     id: 'rec-4',
-    systemId: 'data-integration',
-    systemName: '数据集成平台',
+    systemId: 'data-reporting',
+    systemName: '数据填报平台',
     stageName: '数据采集与汇聚',
     visitedAt: '昨天 17:15',
-    actionSummary: '复核【政务中台至数仓ODS】CDC流同步追平状态'
+    actionSummary: '核对【2026年Q1重点产业链】数据填报批次汇总'
   }
 ];
 
@@ -400,15 +320,15 @@ export const INITIAL_TODOS: TodoTask[] = [
   },
   {
     id: 'todo-audit-2',
-    title: '【数据资产入表】智慧交通客流特征集入表合规审核',
+    title: '【数据资产管理】智慧交通客流特征集资产化合规审核',
     type: 'audit',
     typeLabel: '待审核',
     priority: 'medium',
     systemId: 'data-asset',
-    systemName: '数据资产入表平台',
+    systemName: '数据资产平台',
     time: '2小时前',
     applicant: '交投集团 · 资产管理部',
-    description: '申请将2025年度交通客流特征集进行无形资产登记入表，需确认成本归集清单与法律权属声明。',
+    description: '申请将2025年度交通客流特征集进行无形资产登记与上架，需确认成本归集清单与法律权属声明。',
     deadline: '明日 12:00 前'
   },
   {
@@ -425,21 +345,9 @@ export const INITIAL_TODOS: TodoTask[] = [
     deadline: '本周五 17:00 前'
   },
 
-  // 待处理 (5)
+  // 待处理 (2)
   {
     id: 'todo-proc-1',
-    title: '【CDC流同步告警】政务中台至数仓ODS层发生毫秒级延迟',
-    type: 'process',
-    typeLabel: '待处理',
-    priority: 'high',
-    systemId: 'data-integration',
-    systemName: '数据集成平台',
-    time: '15分钟前',
-    description: 'MySQL Binlog流同步通道因网络偶发抖动积压超过5000条消息，需一键触发追平补偿通道。',
-    deadline: '立即处置'
-  },
-  {
-    id: 'todo-proc-2',
     title: '【数据质量破损】核心户籍表身份证格式校验异常38条',
     type: 'process',
     typeLabel: '待处理',
@@ -451,19 +359,7 @@ export const INITIAL_TODOS: TodoTask[] = [
     deadline: '今日 14:00'
   },
   {
-    id: 'todo-proc-3',
-    title: '【物联接入认证】50台水务泵站边缘遥测网关证书即将过期',
-    type: 'process',
-    typeLabel: '待处理',
-    priority: 'medium',
-    systemId: 'iot-platform',
-    systemName: '物联网平台',
-    time: '3小时前',
-    description: '南区水务监测站MQTT双向认证TLS根证书还剩48小时失效，需下发批量轮转证书脚本。',
-    deadline: '明日 09:00'
-  },
-  {
-    id: 'todo-proc-4',
+    id: 'todo-proc-2',
     title: '【服务网关限流】公共数据API接口调用频次达峰值阈值85%',
     type: 'process',
     typeLabel: '待处理',
@@ -474,20 +370,8 @@ export const INITIAL_TODOS: TodoTask[] = [
     description: '文旅节假日客流查询接口QPS突破3200，建议临时扩展弹性网关节点并调高限流配额。',
     deadline: '今日 17:00'
   },
-  {
-    id: 'todo-proc-5',
-    title: '【爬虫反爬策略】行业招投标采集节点遇到新版JS混淆验证码',
-    type: 'process',
-    typeLabel: '待处理',
-    priority: 'low',
-    systemId: 'web-scraping',
-    systemName: '互联网采集系统',
-    time: '5小时前',
-    description: '3个公共资源交易中心网页结构更新，需调整智能解析器XPath与无头浏览器渲染配置。',
-    deadline: '本周内'
-  },
 
-  // 我的申请 (2)
+  // 我的申请 (1)
   {
     id: 'todo-apply-1',
     title: '【高算力申请】申请开通4卡A100数据沙箱AI模型训练环境',
@@ -500,18 +384,6 @@ export const INITIAL_TODOS: TodoTask[] = [
     description: '当前状态：算力调度中心【审批中】，预计耗时4小时，用于大模型智能体微调任务。',
     deadline: '审批中'
   },
-  {
-    id: 'todo-apply-2',
-    title: '【资产授权申请】申请调用全省企业统一社会信用代码库',
-    type: 'apply',
-    typeLabel: '我的申请',
-    priority: 'medium',
-    systemId: 'dataset-management',
-    systemName: '数据集管理平台',
-    time: '3天前申请',
-    description: '当前状态：省数据局【已初审同意，待主管领导会签】，用于反欺诈风控规则建模。',
-    deadline: '会签中'
-  },
 
   // 我的任务 (4)
   {
@@ -521,7 +393,7 @@ export const INITIAL_TODOS: TodoTask[] = [
     typeLabel: '我的任务',
     priority: 'high',
     systemId: 'evay-bi',
-    systemName: 'EvayBI',
+    systemName: 'EvayBI平台',
     time: '进行中 (已完成 75%)',
     description: '需拉取天枢治理平台稽核合格率与运营平台流转结算数据，生成看板并导出PDF报表。',
     deadline: '明日 18:00'
@@ -540,12 +412,12 @@ export const INITIAL_TODOS: TodoTask[] = [
   },
   {
     id: 'todo-task-3',
-    title: '组织召开【医疗影像数据集入表】三方合规确权现场评审会',
+    title: '组织召开【医疗影像数据集资产化】三方合规确权现场评审会',
     type: 'task',
     typeLabel: '我的任务',
     priority: 'medium',
     systemId: 'data-asset',
-    systemName: '数据资产入表平台',
+    systemName: '数据资产平台',
     time: '排期待定',
     description: '协调律所、会计所与数据质量评估专家，对首批脱敏影像进行无形资产论证。',
     deadline: '下周二'
