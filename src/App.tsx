@@ -15,7 +15,7 @@ import {
 import { SystemItem, TodoTask, RecentVisitItem, SystemNotification } from './types';
 import { Header } from './components/Header';
 import { BlueprintHero } from './components/BlueprintHero';
-import { LifecycleFlowSection } from './components/LifecycleFlowSection';
+import { SystemMatrixSection } from './components/SystemMatrixSection';
 import { FavoriteDrawer } from './components/FavoriteDrawer';
 import { FloatingFavoriteButton } from './components/FloatingFavoriteButton';
 import { SystemModal } from './components/SystemModal';
@@ -277,9 +277,9 @@ export default function App() {
           onOpenLogin={handleOpenLogin}
         />
 
-        {/* 2. 业务集约系统快捷入口矩阵 (全生命周期 5 大阶段平铺纳管) */}
-        <LifecycleFlowSection
-          stages={LIFECYCLE_STAGES}
+        {/* 2. 业务集约系统快捷入口分层矩阵 (按3行层级排布，天枢数据治理为核心底座) */}
+        <SystemMatrixSection
+          systems={ALL_SYSTEMS}
           favoriteSystemIds={favoriteSystemIds}
           onToggleFavorite={handleToggleFavorite}
           onEnterSystem={handleEnterSystem}

@@ -78,10 +78,10 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
             <div className="bg-white/5 border border-white/10 rounded-2xl p-3.5 backdrop-blur-md flex flex-col justify-between">
               <div className="flex items-center justify-between text-sky-400 mb-1">
                 <Layers className="w-4 h-4" />
-                <span className="text-[10px] font-semibold text-sky-300/80 bg-sky-400/10 px-1.5 py-0.5 rounded">全链路</span>
+                <span className="text-[10px] font-semibold text-sky-300/80 bg-sky-400/10 px-1.5 py-0.5 rounded">架构分层</span>
               </div>
-              <div className="text-2xl font-black font-mono text-white tracking-tight">5 <span className="text-xs font-normal text-slate-400">大阶段</span></div>
-              <div className="text-[11px] text-slate-300/80 mt-0.5">覆盖生命周期全流转</div>
+              <div className="text-2xl font-black font-mono text-white tracking-tight">3 <span className="text-xs font-normal text-slate-400">大层次</span></div>
+              <div className="text-[11px] text-slate-300/80 mt-0.5">应用·服务·核心底座</div>
             </div>
 
             <div className="bg-white/5 border border-white/10 rounded-2xl p-3.5 backdrop-blur-md flex flex-col justify-between">
@@ -89,7 +89,7 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
                 <Server className="w-4 h-4" />
                 <span className="text-[10px] font-semibold text-indigo-300/80 bg-indigo-400/10 px-1.5 py-0.5 rounded">集约纳管</span>
               </div>
-              <div className="text-2xl font-black font-mono text-white tracking-tight">16 <span className="text-xs font-normal text-slate-400">套子系统</span></div>
+              <div className="text-2xl font-black font-mono text-white tracking-tight">11 <span className="text-xs font-normal text-slate-400">套子系统</span></div>
               <div className="text-[11px] text-slate-300/80 mt-0.5">单点登录一键直达</div>
             </div>
 
