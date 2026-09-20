@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import img04Asset from '../data/img04.png';
 import {
   Sparkles,
   Maximize2,
@@ -174,15 +175,15 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
           </div>
 
           <img
-            src="/img04.png"
+            src={img04Asset || '/img04.png'}
             alt="数据要素全生命周期集约协同业务全景蓝图"
             className="w-full h-auto max-h-[580px] lg:max-h-[640px] object-contain rounded-xl select-none transition-transform duration-300 group-hover:scale-[1.006]"
             loading="eager"
             onLoad={() => setImageLoaded(true)}
             onError={(e) => {
               const target = e.currentTarget;
-              if (!target.src.includes('src/data/img04.png')) {
-                target.src = '/src/data/img04.png';
+              if (target.src !== '/img04.png') {
+                target.src = '/img04.png';
               }
             }}
           />
@@ -241,7 +242,7 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
           {/* Modal Body: Large responsive image */}
           <div className="flex-1 overflow-auto flex items-center justify-center p-2 sm:p-4">
             <img
-              src="/img04.png"
+              src={img04Asset || '/img04.png'}
               alt="全景蓝图高清研读"
               className="max-w-none w-auto max-h-[88vh] object-contain rounded-lg shadow-2xl border border-white/10"
             />

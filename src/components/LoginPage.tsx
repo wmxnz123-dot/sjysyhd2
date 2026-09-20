@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import img02Asset from '../data/img02.png';
 import {
   Layers,
   Lock,
@@ -142,11 +143,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBackToPortal })
       <main className="flex-1 flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
         <div className="w-full max-w-[1140px] min-h-[570px] bg-white rounded-2xl border border-slate-200/90 shadow-2xl shadow-slate-900/10 overflow-hidden grid grid-cols-1 lg:grid-cols-12 my-auto">
           {/* Left Decorative & Info Panel (7 cols on lg - wider) */}
-          <div className="lg:col-span-7 bg-[#071f43] text-white p-5 sm:p-7 flex flex-col justify-between relative overflow-hidden">
-            {/* Ambient geometric gradient highlights to seamlessly blend with img02 */}
-            <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#113a6e]/40 blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-[#031533]/60 blur-3xl pointer-events-none" />
-
+          <div className="lg:col-span-7 bg-[#0B1E3E] text-white p-5 sm:p-7 flex flex-col justify-between relative overflow-hidden">
             {/* Top Branding Section: Two-line title, breathable spacing, seamlessly connecting to diagram below */}
             <div className="relative z-10 shrink-0 mb-1">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-400/15 text-blue-300 text-xs font-semibold border border-blue-400/25 mb-2 backdrop-blur-xs">
@@ -166,16 +163,14 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBackToPortal })
             {/* Left Visual Asset: Borderless, natural blend directly with the left panel's continuous deep-navy background */}
             <div className="relative z-10 flex-1 flex items-center justify-center py-2 px-0 overflow-hidden min-h-[340px]">
               <img
-                src="/img02.png"
+                src={img02Asset || '/img02.png'}
                 alt="全链路数据要素业务集约协同中枢架构全景"
                 className="w-full h-auto max-h-[410px] object-contain select-none transition-transform duration-300"
                 loading="eager"
                 onError={(e) => {
                   const target = e.currentTarget;
-                  if (!target.src.includes('src/data/img02.png')) {
-                    target.src = '/src/data/img02.png';
-                  } else if (!target.src.includes('img03.png')) {
-                    target.src = '/img03.png';
+                  if (target.src !== '/img02.png') {
+                    target.src = '/img02.png';
                   }
                 }}
               />
