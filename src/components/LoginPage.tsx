@@ -8,16 +8,18 @@ import {
   ArrowRight,
   Sparkles,
   Smartphone,
-  KeyRound
+  KeyRound,
+  ArrowLeft
 } from 'lucide-react';
 
 interface LoginPageProps {
   onLogin: (userInfo: { name: string; department: string; role: string }) => void;
+  onBackToPortal?: () => void;
 }
 
 type LoginTab = 'account' | 'phone';
 
-export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
+export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBackToPortal }) => {
   // Login method tab
   const [activeTab, setActiveTab] = useState<LoginTab>('account');
 
@@ -122,6 +124,17 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             </div>
           </div>
 
+          {onBackToPortal && (
+            <button
+              type="button"
+              onClick={onBackToPortal}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-blue-400 bg-white hover:bg-blue-50/50 text-slate-600 hover:text-blue-600 text-xs font-medium transition-all cursor-pointer shadow-2xs"
+              id="login-back-to-portal-btn"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>返回工作门户</span>
+            </button>
+          )}
         </div>
       </header>
 
@@ -129,49 +142,40 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       <main className="flex-1 flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
         <div className="w-full max-w-[1140px] min-h-[570px] bg-white rounded-2xl border border-slate-200/90 shadow-2xl shadow-slate-900/10 overflow-hidden grid grid-cols-1 lg:grid-cols-12 my-auto">
           {/* Left Decorative & Info Panel (7 cols on lg - wider) */}
-          <div className="lg:col-span-7 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden">
-            {/* Background Cyber Blueprint Grid SVG */}
-            <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="login-cyber-grid" width="26" height="26" patternUnits="userSpaceOnUse">
-                  <circle cx="2" cy="2" r="0.8" fill="#38bdf8" />
-                  <path d="M 26 0 L 0 0 0 26" fill="none" stroke="#334155" strokeWidth="0.5" strokeDasharray="2,3" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#login-cyber-grid)" />
-            </svg>
+          <div className="lg:col-span-7 bg-[#071f43] text-white p-5 sm:p-7 flex flex-col justify-between relative overflow-hidden">
+            {/* Ambient geometric gradient highlights to seamlessly blend with img02 */}
+            <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#113a6e]/40 blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-[#031533]/60 blur-3xl pointer-events-none" />
 
-            {/* Ambient geometric gradient orbs */}
-            <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-blue-600/15 blur-2xl pointer-events-none" />
-            <div className="absolute -left-12 -bottom-12 w-48 h-48 rounded-full bg-indigo-600/15 blur-2xl pointer-events-none" />
-
-            {/* Top Branding Section: Two-line title, breathable spacing, closely connecting to the diagram below */}
+            {/* Top Branding Section: Two-line title, breathable spacing, seamlessly connecting to diagram below */}
             <div className="relative z-10 shrink-0 mb-1">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/15 text-blue-300 text-xs font-semibold border border-blue-400/30 mb-1.5 backdrop-blur-xs">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-400/15 text-blue-300 text-xs font-semibold border border-blue-400/25 mb-2 backdrop-blur-xs">
                 <Sparkles className="w-3.5 h-3.5 text-blue-400" />
                 <span>全生命周期一网通办</span>
               </div>
-              <h2 className="text-2xl sm:text-[26px] lg:text-[28px] font-black tracking-wide text-white mb-1 leading-snug drop-shadow-sm">
+              <h2 className="text-2xl sm:text-[26px] lg:text-[28px] font-black tracking-wide text-white mb-1.5 leading-snug drop-shadow-sm">
                 全链路数据要素
                 <br />
                 业务集约协同中枢
               </h2>
-              <p className="text-xs sm:text-[13px] text-slate-300/85 leading-relaxed max-w-[560px]">
+              <p className="text-xs sm:text-[13px] text-slate-300/80 leading-relaxed max-w-[560px]">
                 纵向贯通采集治理，横向协同开发流通与资产运营，驱动数据要素全生命周期价值释放。
               </p>
             </div>
 
-            {/* Left Visual Asset: Balanced 3D scale with animated orbital flow, traveling arrows and bottom flow legend */}
-            <div className="relative z-10 flex-1 flex items-center justify-center pt-0 pb-1 px-0 overflow-hidden min-h-[350px]">
+            {/* Left Visual Asset: Borderless, natural blend directly with the left panel's continuous deep-navy background */}
+            <div className="relative z-10 flex-1 flex items-center justify-center py-2 px-0 overflow-hidden min-h-[340px]">
               <img
-                src="/未标题-2.svg"
-                alt="全链路数据要素业务集约协同中枢"
-                className="w-full h-auto max-h-[415px] object-contain mx-auto select-none drop-shadow-[0_12px_28px_rgba(2,132,199,0.35)] transition-all duration-300"
+                src="/img02.png"
+                alt="全链路数据要素业务集约协同中枢架构全景"
+                className="w-full h-auto max-h-[410px] object-contain select-none transition-transform duration-300"
                 loading="eager"
                 onError={(e) => {
                   const target = e.currentTarget;
-                  if (!target.src.includes('未标题-2.png')) {
-                    target.src = '/未标题-2.png';
+                  if (!target.src.includes('src/data/img02.png')) {
+                    target.src = '/src/data/img02.png';
+                  } else if (!target.src.includes('img03.png')) {
+                    target.src = '/img03.png';
                   }
                 }}
               />

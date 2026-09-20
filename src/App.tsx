@@ -14,18 +14,29 @@ import {
 } from './data/portalData';
 import { SystemItem, TodoTask, RecentVisitItem, SystemNotification } from './types';
 import { Header } from './components/Header';
-import { WelcomeBanner } from './components/WelcomeBanner';
-import { FavoriteSection } from './components/FavoriteSection';
+import { BlueprintHero } from './components/BlueprintHero';
 import { LifecycleFlowSection } from './components/LifecycleFlowSection';
+import { FavoriteDrawer } from './components/FavoriteDrawer';
+import { FloatingFavoriteButton } from './components/FloatingFavoriteButton';
 import { SystemModal } from './components/SystemModal';
 import { TodoDetailModal } from './components/TodoDetailModal';
 import { SearchModal } from './components/SearchModal';
 import { LoginPage } from './components/LoginPage';
-import { CheckCircle, Info, Layers, Globe } from 'lucide-react';
+import { CheckCircle, Info, Layers, Globe, ShieldCheck } from 'lucide-react';
 
 export default function App() {
-  // Auth state - 默认首屏为登录页面，点击登录后再进入首页
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  // Auth state - 打开页面默认是未登录状态
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
+    try {
+      const saved = localStorage.getItem('portal_is_logged_in');
+      return saved === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  // Current view: 'portal' or 'login'
+  const [currentView, setCurrentView] = useState<'portal' | 'login'>('portal');
 
   const [currentUser, setCurrentUser] = useState<{
     name: string;
@@ -90,6 +101,7 @@ export default function App() {
   const [activeSystemModal, setActiveSystemModal] = useState<SystemItem | null>(null);
   const [activeTaskModal, setActiveTaskModal] = useState<TodoTask | null>(null);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [isFavoriteDrawerOpen, setIsFavoriteDrawerOpen] = useState(false);
 
   // Toast feedback
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -193,6 +205,7 @@ export default function App() {
   const handleLogin = (user: { name: string; department: string; role: string }) => {
     setCurrentUser(user);
     setIsLoggedIn(true);
+    setCurrentView('portal');
     try {
       localStorage.setItem('portal_is_logged_in', 'true');
       localStorage.setItem('portal_current_user', JSON.stringify(user));
@@ -212,8 +225,21 @@ export default function App() {
     showToast('已安全退出当前会话并注销 SSO 凭证');
   };
 
-  if (!isLoggedIn) {
-    return <LoginPage onLogin={handleLogin} />;
+  const handleOpenLogin = () => {
+    setCurrentView('login');
+  };
+
+  const handleBackToPortal = () => {
+    setCurrentView('portal');
+  };
+
+  if (currentView === 'login') {
+    return (
+      <LoginPage
+        onLogin={handleLogin}
+        onBackToPortal={handleBackToPortal}
+      />
+    );
   }
 
   const favoriteSystems = ALL_SYSTEMS.filter(s => favoriteSystemIds.includes(s.id));
@@ -233,23 +259,24 @@ export default function App() {
           showToast('全部通知已标记为已读');
         }}
         onQuickNavigate={handleQuickNavigate}
-        currentUser={currentUser}
+        onOpenFavoriteDrawer={() => setIsFavoriteDrawerOpen(true)}
+        isLoggedIn={isLoggedIn}
+        currentUser={isLoggedIn ? currentUser : null}
         onLogout={handleLogout}
+        onOpenLogin={handleOpenLogin}
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 w-[95%] mx-auto pt-3.5 pb-1 sm:pt-4 sm:pb-2">
-        {/* 1. Welcome Area */}
-        <WelcomeBanner userName={currentUser.name} />
-
-        {/* 2. 我收藏的系统 (Placed above full lifecycle) */}
-        <FavoriteSection
-          favoriteSystems={favoriteSystems}
-          onToggleFavorite={handleToggleFavorite}
-          onEnterSystem={handleEnterSystem}
+      <main className="flex-1 w-[95%] max-w-[1680px] mx-auto pt-4 pb-4">
+        {/* 1. 门户第一屏：平台战略形象宣传 + img04.png 架构全景蓝图展台 */}
+        <BlueprintHero
+          onExploreSystems={() => handleQuickNavigate('lifecycle-section')}
+          onExploreFavorites={() => setIsFavoriteDrawerOpen(true)}
+          isLoggedIn={isLoggedIn}
+          onOpenLogin={handleOpenLogin}
         />
 
-        {/* 3. Data Element Full-Lifecycle - Core Visual Centerpiece */}
+        {/* 2. 业务集约系统快捷入口矩阵 (全生命周期 5 大阶段平铺纳管) */}
         <LifecycleFlowSection
           stages={LIFECYCLE_STAGES}
           favoriteSystemIds={favoriteSystemIds}
@@ -260,26 +287,42 @@ export default function App() {
       </main>
 
       {/* Enterprise Platform Footer */}
-      <footer className="bg-white border-t border-slate-200/80 py-3 mt-4">
-        <div className="w-[95%] mx-auto flex flex-col md:flex-row items-center justify-between gap-2.5 text-xs text-slate-500">
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded bg-blue-700 text-white flex items-center justify-center font-bold text-[10px]">
+      <footer className="bg-white border-t border-slate-200/80 py-4 mt-6">
+        <div className="w-[95%] max-w-[1680px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+          <div className="flex items-center gap-2.5">
+            <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-blue-700 to-indigo-600 text-white flex items-center justify-center font-bold text-[10px]">
               数
             </div>
-            <span className="font-semibold text-slate-700">数据要素全链路工作门户</span>
+            <span className="font-bold text-slate-800">全链路数据要素业务集约协同中枢门户</span>
             <span className="text-slate-300">|</span>
-            <span>数据要素事业部</span>
+            <span>数据要素事业部 · 统一架构与运行中心</span>
           </div>
 
           <div className="flex items-center gap-4 text-slate-400">
             <span className="flex items-center gap-1">
               <Globe className="w-3.5 h-3.5 text-blue-600" />
-              统一身份认证
+              统一认证与安全协同
             </span>
-            <span>© 2026 山东亿云信息技术有限公司</span>
+            <span>© 2026 山东亿云信息技术有限公司 · 版权所有</span>
           </div>
         </div>
       </footer>
+
+      {/* Floating Favorite Button (右侧悬浮常驻胶囊) */}
+      <FloatingFavoriteButton
+        favoriteCount={favoriteSystems.length}
+        onClick={() => setIsFavoriteDrawerOpen(true)}
+      />
+
+      {/* Favorite Systems Drawer (右侧滑出抽屉) */}
+      <FavoriteDrawer
+        isOpen={isFavoriteDrawerOpen}
+        onClose={() => setIsFavoriteDrawerOpen(false)}
+        favoriteSystems={favoriteSystems}
+        onToggleFavorite={handleToggleFavorite}
+        onEnterSystem={handleEnterSystem}
+        onExploreAllSystems={() => handleQuickNavigate('lifecycle-section')}
+      />
 
       {/* Dialog Modals */}
       <SystemModal
