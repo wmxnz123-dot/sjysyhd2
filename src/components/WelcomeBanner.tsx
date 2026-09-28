@@ -47,8 +47,8 @@ export const WelcomeBanner: React.FC<WelcomeBannerProps> = ({
           </div>
           <p className="text-xs sm:text-[13px] text-slate-500 leading-relaxed max-w-none">
             {isLoggedIn
-              ? '涵盖数据资源化、资产化与价值化全生命周期，提供 16 套业务系统的统一单点登录与敏捷导航。'
-              : '数据要素全链路业务协同中枢已联通 16 套业务系统。请登录以使用 SSO 单点直达及定制工作台功能。'}
+              ? '涵盖数据资源化、资产化与价值化全生命周期，提供 14 套业务系统的统一单点登录与敏捷导航。'
+              : '数据要素全链路业务协同中枢已联通 14 套业务系统。请登录以使用 SSO 单点直达及定制工作台功能。'}
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export const WelcomeBanner: React.FC<WelcomeBannerProps> = ({
           <div className="bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 py-2.5 flex flex-col items-center min-w-[90px] shadow-2xs">
             <div className="flex items-center gap-1.5 text-blue-700">
               <Layers className="w-3.5 h-3.5" />
-              <span className="text-lg font-bold font-mono">5</span>
+              <span className="text-lg font-bold font-mono">4</span>
             </div>
             <span className="text-[11px] text-slate-600 font-medium mt-0.5">流转阶段</span>
           </div>
@@ -77,7 +77,7 @@ export const WelcomeBanner: React.FC<WelcomeBannerProps> = ({
           <div className="bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 py-2.5 flex flex-col items-center min-w-[90px] shadow-2xs">
             <div className="flex items-center gap-1.5 text-indigo-700">
               <Server className="w-3.5 h-3.5" />
-              <span className="text-lg font-bold font-mono">16</span>
+              <span className="text-lg font-bold font-mono">14</span>
             </div>
             <span className="text-[11px] text-slate-600 font-medium mt-0.5">联通系统</span>
           </div>

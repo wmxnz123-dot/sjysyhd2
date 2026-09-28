@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import {
   Search,
   Grid,
-  Sparkles,
-  Layers,
-  Database,
+  Share2,
   Cpu,
+  Database,
+  Radio,
   RotateCcw
 } from 'lucide-react';
 import { SystemItem } from '../types';
@@ -41,29 +41,38 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
     );
   };
 
-  // Row 1: 可信数据空间、智能体开发平台
-  const row1Ids = ['trusted-data-space', 'agent-dev'];
-  const row1Systems = systems
-    .filter(s => row1Ids.includes(s.id))
-    .sort((a, b) => row1Ids.indexOf(a.id) - row1Ids.indexOf(b.id));
+  // 1. 倒序第一层 (顶层)：流通 (数据流通服务平台、可信数据空间、数据服务平台、数据资产管理平台)
+  const circulationIds = ['data-circulation', 'trusted-data-space', 'data-service', 'data-asset'];
+  const circulationSystems = systems
+    .filter(s => circulationIds.includes(s.id))
+    .sort((a, b) => circulationIds.indexOf(a.id) - circulationIds.indexOf(b.id));
 
-  // Row 3 (底座): 天枢数据治理平台
-  const row3Ids = ['tianshu-governance'];
-  const row3Systems = systems.filter(s => row3Ids.includes(s.id));
+  // 2. 倒序第二层 (应用层)：开发利用 (融合应用开发平台、协作开发平台、数据沙箱平台、EvayBI平台、智能体开发平台)
+  const developmentIds = ['agent-dev', 'evay-bi', 'fusion-app', 'dev-collaboration', 'data-sandbox'];
+  const developmentSystems = systems
+    .filter(s => developmentIds.includes(s.id))
+    .sort((a, b) => developmentIds.indexOf(a.id) - developmentIds.indexOf(b.id));
 
-  // Row 2: 其余放第二行
-  // (数据填报平台、协作开发平台、数据沙箱平台、数据标注平台、EvayBI平台、数据运营平台、数据服务平台、数据资产平台)
-  const row2Systems = systems.filter(
-    s => !row1Ids.includes(s.id) && !row3Ids.includes(s.id)
-  );
+  // 3. 倒序第三层 (底座层)：治理 (数据资源治理平台、CIM 城市信息模型平台、数据标注平台)
+  const governanceIds = ['data-governance', 'cim-model', 'data-annotation'];
+  const governanceSystems = systems
+    .filter(s => governanceIds.includes(s.id))
+    .sort((a, b) => governanceIds.indexOf(a.id) - governanceIds.indexOf(b.id));
+
+  // 4. 倒序第四层 (源头层)：汇聚 (物联网感知平台、视频融合与分析平台)
+  const collectionIds = ['iot-sensing', 'video-fusion'];
+  const collectionSystems = systems
+    .filter(s => collectionIds.includes(s.id))
+    .sort((a, b) => collectionIds.indexOf(a.id) - collectionIds.indexOf(b.id));
 
   // Filtered views according to search input
-  const filteredRow1 = row1Systems.filter(matchesQuery);
-  const filteredRow2 = row2Systems.filter(matchesQuery);
-  const filteredRow3 = row3Systems.filter(matchesQuery);
+  const filteredCirculation = circulationSystems.filter(matchesQuery);
+  const filteredDevelopment = developmentSystems.filter(matchesQuery);
+  const filteredGovernance = governanceSystems.filter(matchesQuery);
+  const filteredCollection = collectionSystems.filter(matchesQuery);
 
   const totalFilteredCount =
-    filteredRow1.length + filteredRow2.length + filteredRow3.length;
+    filteredCirculation.length + filteredDevelopment.length + filteredGovernance.length + filteredCollection.length;
 
   return (
     <section id="lifecycle-section" className="mb-6 scroll-mt-20">
@@ -78,11 +87,11 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
               集约协同业务系统入口矩阵
             </h2>
             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">
-              全景分层部署 · {systems.length} 套系统全量纳管
+              倒置业务架构 (流通 ➔ 开发 ➔ 治理 ➔ 汇聚) · {systems.length} 套系统全量纳管
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            横向协同开发利用与可信流通，纵向依托天枢数据治理核心底座，提供一网统管与统一单点登录服务。
+            自顶向下涵盖要素流通、开发利用、治理底座与感知汇聚四大层次，提供一网统管与统一 SSO 单点登录直达。
           </p>
         </div>
 
@@ -112,60 +121,28 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
         </div>
       </div>
 
-      {/* 主三行分层排布容器 */}
+      {/* 主四阶段倒序分层排布容器 */}
       <div className="space-y-4">
-        {/* 第一行：可信数据空间 和 智能体开发平台 */}
-        {filteredRow1.length > 0 && (
+        {/* 第一层 (顶层)：数据要素合规流通与资产运营 (4 套) */}
+        {filteredCirculation.length > 0 && (
           <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs">
             <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-slate-100">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-blue-500" />
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                  第一层 · 创新应用与可信流通前沿
+                  第一层 · 数据要素合规流通与资产运营（价值释放层）
                 </span>
                 <span className="text-[11px] text-slate-400 font-medium">
-                  (可信数据空间 · 智能体开发平台)
+                  (数据流通服务平台 · 可信数据空间 · 数据服务平台 · 数据资产管理平台)
                 </span>
               </div>
-              <span className="text-[11px] text-blue-600 font-semibold bg-blue-50 px-2 py-0.5 rounded">
-                2 套核心系统
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-              {filteredRow1.map(system => (
-                <SystemCard
-                  key={system.id}
-                  system={system}
-                  isFavorite={favoriteSystemIds.includes(system.id)}
-                  onToggleFavorite={onToggleFavorite}
-                  onEnterSystem={onEnterSystem}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* 第二行：其余系统 (数据填报、协作开发、数据沙箱、数据标注、EvayBI、数据运营、数据服务、数据资产) */}
-        {filteredRow2.length > 0 && (
-          <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs">
-            <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-slate-100">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-indigo-500" />
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                  第二层 · 全链路业务集约应用与服务
-                </span>
-                <span className="text-[11px] text-slate-400 font-medium">
-                  (数据填报 · 敏捷分析 · 安全开发 · 要素运营与资产服务)
-                </span>
-              </div>
-              <span className="text-[11px] text-indigo-600 font-semibold bg-indigo-50 px-2 py-0.5 rounded">
-                {filteredRow2.length} 套业务系统
+              <span className="text-[11px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded">
+                {filteredCirculation.length} 套流通系统
               </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-              {filteredRow2.map(system => (
+              {filteredCirculation.map(system => (
                 <SystemCard
                   key={system.id}
                   system={system}
@@ -178,26 +155,58 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
           </div>
         )}
 
-        {/* 第三行：核心底座——天枢数据治理平台 (颜色更深、突出底座基石) */}
-        {filteredRow3.length > 0 && (
-          <div className="bg-gradient-to-r from-[#07193b] via-[#0b2452] to-[#07193b] rounded-2xl border border-blue-900/60 p-4 sm:p-5 shadow-md">
-            <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-blue-900/40">
+        {/* 第二层 (中层)：数据价值开发与敏捷应用 (5 套) */}
+        {filteredDevelopment.length > 0 && (
+          <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs">
+            <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-slate-100">
               <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-blue-400 animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-wider text-white">
-                  第三层 · 核心底座（基石底座）
+                <div className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                  第二层 · 数据价值开发与敏捷应用（智算开发层）
                 </span>
-                <span className="text-[11px] text-blue-300 font-medium">
-                  (全域数据标准 · 元数据拓扑 · 质量稽核 · 数据安全分类分级)
+                <span className="text-[11px] text-slate-400 font-medium">
+                  (智能体AI算法 · EvayBI分析工具 · 融合应用 · 协作开发 · 数据沙箱)
                 </span>
               </div>
-              <span className="text-[11px] text-blue-200 font-bold bg-blue-500/20 border border-blue-400/30 px-2.5 py-0.5 rounded-full">
-                数据要素统一底座
+              <span className="text-[11px] text-indigo-600 font-semibold bg-indigo-50 px-2 py-0.5 rounded">
+                {filteredDevelopment.length} 套开发利用系统
               </span>
             </div>
 
-            <div className="grid grid-cols-1 gap-3.5">
-              {filteredRow3.map(system => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5">
+              {filteredDevelopment.map(system => (
+                <SystemCard
+                  key={system.id}
+                  system={system}
+                  isFavorite={favoriteSystemIds.includes(system.id)}
+                  onToggleFavorite={onToggleFavorite}
+                  onEnterSystem={onEnterSystem}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 第三层 (核心底座)：数据资源治理与底座 (3 套，深色底座基石视觉) */}
+        {filteredGovernance.length > 0 && (
+          <div className="bg-gradient-to-r from-[#07193b] via-[#0b2452] to-[#07193b] rounded-2xl border border-blue-900/60 p-4 sm:p-5 shadow-md">
+            <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-blue-900/40">
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-wider text-white">
+                  第三层 · 数据资源治理底座（基石底座）
+                </span>
+                <span className="text-[11px] text-blue-300 font-medium">
+                  (数据资源治理平台 · CIM 城市信息模型平台 · 数据标注平台)
+                </span>
+              </div>
+              <span className="text-[11px] text-cyan-200 font-bold bg-cyan-500/20 border border-cyan-400/30 px-2.5 py-0.5 rounded-full">
+                {filteredGovernance.length} 套治理底座系统
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+              {filteredGovernance.map(system => (
                 <SystemCard
                   key={system.id}
                   system={system}
@@ -205,6 +214,38 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
                   onToggleFavorite={onToggleFavorite}
                   onEnterSystem={onEnterSystem}
                   isBaseFoundation={true}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 第四层 (底层源头)：物理世界感知与多源汇聚 (2 套) */}
+        {filteredCollection.length > 0 && (
+          <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs">
+            <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-slate-100">
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                  第四层 · 物理世界感知与多源汇聚（源头接入层）
+                </span>
+                <span className="text-[11px] text-slate-400 font-medium">
+                  (物联网感知平台 · 视频融合与分析平台)
+                </span>
+              </div>
+              <span className="text-[11px] text-blue-600 font-semibold bg-blue-50 px-2 py-0.5 rounded">
+                {filteredCollection.length} 套感知汇聚系统
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              {filteredCollection.map(system => (
+                <SystemCard
+                  key={system.id}
+                  system={system}
+                  isFavorite={favoriteSystemIds.includes(system.id)}
+                  onToggleFavorite={onToggleFavorite}
+                  onEnterSystem={onEnterSystem}
                 />
               ))}
             </div>

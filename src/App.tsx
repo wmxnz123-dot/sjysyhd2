@@ -78,7 +78,8 @@ export default function App() {
   const [recentVisits, setRecentVisits] = useState<RecentVisitItem[]>(() => {
     try {
       const saved = localStorage.getItem('portal_recent_visits');
-      return saved ? JSON.parse(saved) : INITIAL_RECENT_VISITS;
+      const loaded: RecentVisitItem[] = saved ? JSON.parse(saved) : INITIAL_RECENT_VISITS;
+      return loaded.filter(v => ALL_SYSTEMS.some(s => s.id === v.systemId));
     } catch {
       return INITIAL_RECENT_VISITS;
     }
@@ -88,7 +89,8 @@ export default function App() {
   const [todos, setTodos] = useState<TodoTask[]>(() => {
     try {
       const saved = localStorage.getItem('portal_todos');
-      return saved ? JSON.parse(saved) : INITIAL_TODOS;
+      const loaded: TodoTask[] = saved ? JSON.parse(saved) : INITIAL_TODOS;
+      return loaded.filter(t => ALL_SYSTEMS.some(s => s.id === t.systemId));
     } catch {
       return INITIAL_TODOS;
     }

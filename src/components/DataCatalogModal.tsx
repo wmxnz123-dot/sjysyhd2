@@ -35,9 +35,9 @@ const MOCK_ASSETS: CatalogAsset[] = [
   {
     id: 'ast-1',
     name: '全省法人单位基础信用信息库',
-    stageName: '数据存储与治理',
-    systemName: '天枢数据治理平台',
-    systemId: 'tianshu-governance',
+    stageName: '数据资源治理底座',
+    systemName: '数据资源治理平台',
+    systemId: 'data-governance',
     domain: '市场监管 / 信用',
     volume: '2,840 万条',
     securityLevel: '商密二级',
@@ -69,22 +69,10 @@ const MOCK_ASSETS: CatalogAsset[] = [
     description: '脱敏后的地铁、公交与网约车客流起止点OD矩阵，用于城市运力调配与商业选址。'
   },
   {
-    id: 'ast-4',
-    name: '重点产业链工业能耗与排产填报归集数据',
-    stageName: '数据采集与汇聚',
-    systemName: '数据填报平台',
-    systemId: 'data-reporting',
-    domain: '先进制造 / 填报',
-    volume: '128 家规上企业',
-    securityLevel: '政企内部共享',
-    updateFreq: '按月周期归集',
-    description: '纳管重点产业链能耗、产能负荷与重点设备排产填报指标，赋能产业链协同监测。'
-  },
-  {
     id: 'ast-5',
     name: '医疗脱敏影像与病理特征资产集 (确权评估中)',
-    stageName: '数据运营与服务',
-    systemName: '数据资产平台',
+    stageName: '数据要素合规流通',
+    systemName: '数据资产管理平台',
     systemId: 'data-asset',
     domain: '医疗健康 / 资产',
     volume: '12 万例',

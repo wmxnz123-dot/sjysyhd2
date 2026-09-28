@@ -51,7 +51,11 @@ import {
   FileText,
   Lock,
   Share2,
-  FolderOpen
+  FolderOpen,
+  Radio,
+  Video,
+  Building2,
+  AppWindow
 } from 'lucide-react';
 
 interface IconHelperProps {
@@ -112,7 +116,11 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; size?: n
   FileText,
   Lock,
   Share2,
-  FolderOpen
+  FolderOpen,
+  Radio,
+  Video,
+  Building2,
+  AppWindow
 };
 
 export const IconHelper: React.FC<IconHelperProps> = ({ name, className = 'w-4 h-4', size }) => {
