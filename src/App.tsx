@@ -18,7 +18,6 @@ import { BlueprintHero } from './components/BlueprintHero';
 import { SystemMatrixSection } from './components/SystemMatrixSection';
 import { FavoriteDrawer } from './components/FavoriteDrawer';
 import { FloatingFavoriteButton } from './components/FloatingFavoriteButton';
-import { SystemModal } from './components/SystemModal';
 import { TodoDetailModal } from './components/TodoDetailModal';
 import { SearchModal } from './components/SearchModal';
 import { LoginPage } from './components/LoginPage';
@@ -99,7 +98,6 @@ export default function App() {
   const [notifications, setNotifications] = useState<SystemNotification[]>(INITIAL_NOTIFICATIONS);
 
   // Modals state
-  const [activeSystemModal, setActiveSystemModal] = useState<SystemItem | null>(null);
   const [activeTaskModal, setActiveTaskModal] = useState<TodoTask | null>(null);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [isFavoriteDrawerOpen, setIsFavoriteDrawerOpen] = useState(false);
@@ -165,12 +163,8 @@ export default function App() {
     }
   };
 
-  // Enter / Launch system
+  // Enter / Launch system directly from entrance
   const handleEnterSystem = (system: SystemItem) => {
-    setActiveSystemModal(system);
-  };
-
-  const handleConfirmLaunch = (system: SystemItem) => {
     // Record into recent visits
     const newVisit: RecentVisitItem = {
       id: `rec-${Date.now()}`,
@@ -178,7 +172,7 @@ export default function App() {
       systemName: system.name,
       stageName: system.stageName,
       visitedAt: '刚刚',
-      actionSummary: `访问【${system.name}】并执行业务操作`
+      actionSummary: `直达【${system.name}】`
     };
 
     setRecentVisits(prev => {
@@ -186,7 +180,9 @@ export default function App() {
       return [newVisit, ...filtered].slice(0, 6);
     });
 
-    showToast(`正在通过统一SSO单点登录启动【${system.name}】...`);
+    setIsFavoriteDrawerOpen(false);
+    setIsSearchModalOpen(false);
+    showToast(`已通过统一SSO单点登录直达【${system.name}】`);
   };
 
   // Quick complete task
@@ -326,13 +322,6 @@ export default function App() {
       />
 
       {/* Dialog Modals */}
-      <SystemModal
-        system={activeSystemModal}
-        isOpen={!!activeSystemModal}
-        onClose={() => setActiveSystemModal(null)}
-        onConfirmEnter={handleConfirmLaunch}
-      />
-
       <TodoDetailModal
         task={activeTaskModal}
         isOpen={!!activeTaskModal}
@@ -340,7 +329,10 @@ export default function App() {
         onComplete={handleQuickCompleteTask}
         onJumpToSystem={systemId => {
           const s = ALL_SYSTEMS.find(item => item.id === systemId);
-          if (s) handleEnterSystem(s);
+          if (s) {
+            setActiveTaskModal(null);
+            handleEnterSystem(s);
+          }
         }}
         allSystems={ALL_SYSTEMS}
       />
