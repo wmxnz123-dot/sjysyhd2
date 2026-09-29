@@ -121,16 +121,16 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
         </div>
       </div>
 
-      {/* 主四阶段倒序分层排布容器 */}
+      {/* 主四阶段分层排布容器 */}
       <div className="space-y-4">
-        {/* 第一层 (顶层)：数据要素合规流通与资产运营 (4 套) */}
+        {/* 第四层 (顶层)：数据要素合规流通与资产运营 (4 套) */}
         {filteredCirculation.length > 0 && (
           <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs">
             <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-slate-100">
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                  第一层 · 数据要素合规流通与资产运营（价值释放层）
+                  第四层 · 数据要素合规流通与资产运营（价值释放层）
                 </span>
               </div>
               <span className="text-[11px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded">
@@ -152,14 +152,14 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
           </div>
         )}
 
-        {/* 第二层 (中层)：数据价值开发与敏捷应用 (5 套) */}
+        {/* 第三层 (中层)：数据价值开发与敏捷应用 (5 套) */}
         {filteredDevelopment.length > 0 && (
           <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs">
             <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-slate-100">
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                  第二层 · 数据价值开发与敏捷应用（智算开发层）
+                  第三层 · 数据价值开发与敏捷应用（智算开发层）
                 </span>
               </div>
               <span className="text-[11px] text-indigo-600 font-semibold bg-indigo-50 px-2 py-0.5 rounded">
@@ -181,14 +181,14 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
           </div>
         )}
 
-        {/* 第三层 (核心底座)：数据资源治理与底座 (3 套，深色底座基石视觉) */}
+        {/* 第二层 (核心底座)：数据资源治理与底座 (3 套，深色底座基石视觉) */}
         {filteredGovernance.length > 0 && (
           <div className="bg-gradient-to-r from-[#07193b] via-[#0b2452] to-[#07193b] rounded-2xl border border-blue-900/60 p-4 sm:p-5 shadow-md">
             <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-blue-900/40">
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
                 <span className="text-xs font-bold uppercase tracking-wider text-white">
-                  第三层 · 数据资源治理底座（基石底座层）
+                  第二层 · 数据资源治理底座（基石底座层）
                 </span>
               </div>
               <span className="text-[11px] text-cyan-200 font-bold bg-cyan-500/20 border border-cyan-400/30 px-2.5 py-0.5 rounded-full">
@@ -211,14 +211,14 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
           </div>
         )}
 
-        {/* 第四层 (底层源头)：物理世界感知与多源汇聚 (2 套) */}
+        {/* 第一层 (底层源头)：物理世界感知与多源汇聚 (2 套) */}
         {filteredCollection.length > 0 && (
           <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs">
             <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-slate-100">
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                  第四层 · 物理世界感知与多源汇聚（源头接入层）
+                  第一层 · 物理世界感知与多源汇聚（源头接入层）
                 </span>
               </div>
               <span className="text-[11px] text-blue-600 font-semibold bg-blue-50 px-2 py-0.5 rounded">
