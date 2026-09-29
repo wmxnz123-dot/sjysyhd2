@@ -87,11 +87,11 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
               集约协同业务系统入口矩阵
             </h2>
             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">
-              倒置业务架构 (流通 ➔ 开发 ➔ 治理 ➔ 汇聚) · {systems.length} 套系统全量纳管
+              业务架构流程 (汇聚 ➔ 治理 ➔ 开发 ➔ 流通) · {systems.length} 套系统全量纳管
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            自顶向下涵盖要素流通、开发利用、治理底座与感知汇聚四大层次，提供一网统管与统一 SSO 单点登录直达。
+            涵盖多源汇聚、资源治理、开发利用与要素流通四大流转阶段，提供一网统管与统一 SSO 单点登录直达。
           </p>
         </div>
 
@@ -132,9 +132,6 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
                   第一层 · 数据要素合规流通与资产运营（价值释放层）
                 </span>
-                <span className="text-[11px] text-slate-400 font-medium">
-                  (数据流通服务平台 · 可信数据空间 · 数据服务平台 · 数据资产管理平台)
-                </span>
               </div>
               <span className="text-[11px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded">
                 {filteredCirculation.length} 套流通系统
@@ -164,9 +161,6 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
                   第二层 · 数据价值开发与敏捷应用（智算开发层）
                 </span>
-                <span className="text-[11px] text-slate-400 font-medium">
-                  (智能体AI算法 · EvayBI分析工具 · 融合应用 · 协作开发 · 数据沙箱)
-                </span>
               </div>
               <span className="text-[11px] text-indigo-600 font-semibold bg-indigo-50 px-2 py-0.5 rounded">
                 {filteredDevelopment.length} 套开发利用系统
@@ -194,10 +188,7 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
                 <span className="text-xs font-bold uppercase tracking-wider text-white">
-                  第三层 · 数据资源治理底座（基石底座）
-                </span>
-                <span className="text-[11px] text-blue-300 font-medium">
-                  (数据资源治理平台 · CIM 城市信息模型平台 · 数据标注平台)
+                  第三层 · 数据资源治理底座（基石底座层）
                 </span>
               </div>
               <span className="text-[11px] text-cyan-200 font-bold bg-cyan-500/20 border border-cyan-400/30 px-2.5 py-0.5 rounded-full">
@@ -228,9 +219,6 @@ export const SystemMatrixSection: React.FC<SystemMatrixSectionProps> = ({
                 <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
                   第四层 · 物理世界感知与多源汇聚（源头接入层）
-                </span>
-                <span className="text-[11px] text-slate-400 font-medium">
-                  (物联网感知平台 · 视频融合与分析平台)
                 </span>
               </div>
               <span className="text-[11px] text-blue-600 font-semibold bg-blue-50 px-2 py-0.5 rounded">

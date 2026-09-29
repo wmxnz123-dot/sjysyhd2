@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import img04Asset from '../data/img04.png';
+import img05Asset from '../data/img05.png';
 import {
   Sparkles,
   Maximize2,
@@ -81,7 +81,7 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
                 <span className="text-[10px] font-semibold text-sky-300/80 bg-sky-400/10 px-1.5 py-0.5 rounded">架构分层</span>
               </div>
               <div className="text-2xl font-black font-mono text-white tracking-tight">4 <span className="text-xs font-normal text-slate-400">大阶段</span></div>
-              <div className="text-[11px] text-slate-300/80 mt-0.5">流通·开发·治理·汇聚</div>
+              <div className="text-[11px] text-slate-300/80 mt-0.5">汇聚·治理·开发·流通</div>
             </div>
 
             <div className="bg-white/5 border border-white/10 rounded-2xl p-3.5 backdrop-blur-md flex flex-col justify-between">
@@ -104,17 +104,17 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
 
             <div className="bg-white/5 border border-white/10 rounded-2xl p-3.5 backdrop-blur-md flex flex-col justify-between">
               <div className="flex items-center justify-between text-amber-400 mb-1">
-                <Activity className="w-4 h-4" />
-                <span className="text-[10px] font-semibold text-amber-300/80 bg-amber-400/10 px-1.5 py-0.5 rounded">实时联动</span>
+                <Sparkles className="w-4 h-4" />
+                <span className="text-[10px] font-semibold text-amber-300/80 bg-amber-400/10 px-1.5 py-0.5 rounded">数智赋能</span>
               </div>
-              <div className="text-2xl font-black font-mono text-white tracking-tight">24/7</div>
-              <div className="text-[11px] text-slate-300/80 mt-0.5">集约协同调度在线率</div>
+              <div className="text-2xl font-black font-mono text-white tracking-tight">全场景</div>
+              <div className="text-[11px] text-slate-300/80 mt-0.5">AI大模型·BI分析·业务编排</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 2. img04.png 业务架构与中枢全景蓝图展台 (宣传门面 + 按图索引核心) */}
+      {/* 2. img05.png 业务架构与中枢全景蓝图展台 (宣传门面 + 按图索引核心) */}
       <div className="mt-4 bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden">
         {/* 展台标题栏与工具栏 */}
         <div className="px-5 sm:px-6 py-3.5 bg-gradient-to-r from-slate-50 via-blue-50/30 to-slate-50 border-b border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
@@ -150,7 +150,7 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
             </button>
 
             <a
-              href="/img04.png"
+              href="/img05.png"
               download="数据要素全生命周期业务全景蓝图.png"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-xs font-medium border border-slate-200 transition-colors shadow-2xs cursor-pointer"
               title="下载高清全景架构蓝图"
@@ -175,15 +175,15 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
           </div>
 
           <img
-            src={img04Asset || '/img04.png'}
+            src={img05Asset || '/img05.png'}
             alt="数据要素全生命周期集约协同业务全景蓝图"
             className="w-full h-auto max-h-[580px] lg:max-h-[640px] object-contain rounded-xl select-none transition-transform duration-300 group-hover:scale-[1.006]"
             loading="eager"
             onLoad={() => setImageLoaded(true)}
             onError={(e) => {
               const target = e.currentTarget;
-              if (target.src !== '/img04.png') {
-                target.src = '/img04.png';
+              if (target.src !== '/img05.png') {
+                target.src = '/img05.png';
               }
             }}
           />
@@ -194,7 +194,7 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="font-medium text-slate-700">蓝图功能已全面落地：</span>
-            <span>涉及的 16 套业务系统已全部接入中枢，支持统一认证与协同调度</span>
+            <span>涉及的 14 套业务系统已全部接入中枢，支持统一认证与协同调度</span>
           </div>
 
           <button
@@ -220,12 +220,12 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
 
             <div className="flex items-center gap-3">
               <a
-                href="/img04.png"
+                href="/img05.png"
                 download="数据要素全生命周期业务全景蓝图.png"
                 className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-colors flex items-center gap-1.5"
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>下载原图 (1986×1104)</span>
+                <span>下载原图</span>
               </a>
 
               <button
@@ -242,7 +242,7 @@ export const BlueprintHero: React.FC<BlueprintHeroProps> = ({
           {/* Modal Body: Large responsive image */}
           <div className="flex-1 overflow-auto flex items-center justify-center p-2 sm:p-4">
             <img
-              src={img04Asset || '/img04.png'}
+              src={img05Asset || '/img05.png'}
               alt="全景蓝图高清研读"
               className="max-w-none w-auto max-h-[88vh] object-contain rounded-lg shadow-2xl border border-white/10"
             />

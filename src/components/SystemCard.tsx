@@ -28,7 +28,7 @@ export const SystemCard: React.FC<SystemCardProps> = ({
           : 'bg-white hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/30 border border-slate-200/90 hover:border-blue-400 text-slate-800 hover:shadow-xs'
       }`}
       id={`system-card-${system.id}`}
-      title={`进入系统：${system.name} · ${system.coreCapability}${isBaseFoundation ? '（核心底座）' : ''}`}
+      title={`进入系统：${system.name} · ${system.coreCapability}`}
     >
       {/* Left: App Icon & System Quick Information */}
       <div className="flex items-center gap-3 min-w-0 flex-1">
@@ -53,11 +53,6 @@ export const SystemCard: React.FC<SystemCardProps> = ({
             >
               {system.name}
             </h4>
-            {isBaseFoundation && (
-              <span className="shrink-0 px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-500/30 text-blue-200 border border-blue-400/40">
-                核心底座
-              </span>
-            )}
           </div>
           <div className="mt-1 flex items-center gap-1.5">
             <span

@@ -267,7 +267,7 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1 w-[95%] max-w-[1680px] mx-auto pt-4 pb-4">
-        {/* 1. 门户第一屏：平台战略形象宣传 + img04.png 架构全景蓝图展台 */}
+        {/* 1. 门户第一屏：平台战略形象宣传 + img05.png 架构全景蓝图展台 */}
         <BlueprintHero
           onExploreSystems={() => handleQuickNavigate('lifecycle-section')}
           onExploreFavorites={() => setIsFavoriteDrawerOpen(true)}
